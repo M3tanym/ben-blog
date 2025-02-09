@@ -1,17 +1,34 @@
-import React from 'react';
-import {Container, Typography} from "@mui/material";
+import React, {useEffect, useState} from 'react';
+import {Container} from "@mui/material";
+import {useParams} from "react-router-dom";
+import Markdown from "react-markdown";
+import NotFound from "./NotFound";
 
-const MarkdownLoader = (props) => {
-    console.log("!");
-    console.log(props);
-    return (
-        <Container>
-            <title>Markdown Loader</title>
-            <Typography variant="h5">
-                Markdown Loader
-            </Typography>
-        </Container>
-    );
+const MarkdownLoader = () => {
+    const pageName = useParams()['*'];
+    const markdownPath = 'http://localhost:8080/src/' + pageName + '.md';
+    const [fileText, setFileText] = useState('');
+    useEffect(() => {
+        fetch(markdownPath)
+            .then(response => {
+                if (response.status === 200) {
+                    return response.text();
+                }
+                return null;
+            }).then(text => setFileText(text));
+    }, [markdownPath]);
+
+    if (fileText != null) {
+        return (
+            <Container>
+                <title>{pageName}</title>
+                <br/>
+                <Markdown>{fileText}</Markdown>
+            </Container>
+        );
+    }
+
+    return <NotFound/>;
 };
 
 export default MarkdownLoader;

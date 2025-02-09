@@ -1,15 +1,15 @@
 import React from 'react';
 import {Container, Typography} from "@mui/material";
 
-const Home = () => {
+const NotFound = () => {
     return (
         <Container>
-            <title>Home</title>
+            <title>Not Found</title>
             <Typography variant="h4">
-                🛠️ Home 🏗️
+                No entry exists by this name ☹️
             </Typography>
         </Container>
     );
 };
 
-export default Home;
+export default NotFound;

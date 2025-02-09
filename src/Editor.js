@@ -58,7 +58,7 @@ const Textarea = styled(TextareaAutosize)(
   `,
 );
 
-const Editor = (props) => {
+const Editor = () => {
     const [markdownContent, setMarkdownContent] = useState('## _Hello,_ **Markdown**');
     return (
         <Container>
@@ -72,7 +72,7 @@ const Editor = (props) => {
             >
                 <Grid item>
                     <br/>
-                    <Typography variant="h5">
+                    <Typography variant="h4">
                         Enter some Markdown:
                     </Typography>
                     <br/>
