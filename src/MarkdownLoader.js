@@ -6,7 +6,10 @@ import NotFound from "./NotFound";
 
 const MarkdownLoader = () => {
     const pageName = useParams()['*'];
-    const markdownPath = 'http://localhost:8080/src/' + pageName + '.md';
+    const basePath = window.host === 'blog.bengillett.com' ?
+        'https://github.com/M3tanym/ben-blog/tree/main/src/' :
+        'http://localhost:8080/src/';
+    const markdownPath = basePath + pageName + '.md';
     const [fileText, setFileText] = useState('');
     useEffect(() => {
         fetch(markdownPath)
