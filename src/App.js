@@ -4,13 +4,10 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import {CssBaseline} from "@mui/material";
 import {SnackbarProvider, useSnackbar} from 'notistack';
-import MainRouter from "./MainRouter";
-
-const LoadApp = props => {
-    const {enqueueSnackbar} = useSnackbar();
-    const produceSnackBar = (message, variant = "error") => enqueueSnackbar(message, {variant: variant});
-    return <MainRouter produceSnackBar={produceSnackBar} {...props}/>;
-};
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Home from "./Home";
+import Editor from "./Editor";
+import MarkdownLoader from "./MarkdownLoader";
 
 const App = () => {
     const darkMode = !useMediaQuery('(prefers-color-scheme: light)');
@@ -24,13 +21,21 @@ const App = () => {
         [darkMode],
     );
     const metaTheme = darkMode ? "#303030" : "#fafafa";
+    const {enqueueSnackbar} = useSnackbar();
+    const produceSnackBar = (message, variant = "error") => enqueueSnackbar(message, {variant: variant});
 
     return (
         <ThemeProvider theme={theme}>
             <meta name="theme-color" content={metaTheme}/>
             <CssBaseline/>
             <SnackbarProvider maxSnack={3} preventDuplicate>
-                <LoadApp darkMode={darkMode}/>
+                <BrowserRouter produceSnackBar={produceSnackBar} darkMode={darkMode}>
+                    <Routes>
+                        <Route path="/" element={<Home/>}/>
+                        <Route path="editor" element={<Editor/>}/>
+                        <Route path="*" element={<MarkdownLoader/>}/>
+                    </Routes>
+                </BrowserRouter>
             </SnackbarProvider>
         </ThemeProvider>
     );
