@@ -6,7 +6,6 @@ import {CssBaseline} from "@mui/material";
 import {SnackbarProvider, useSnackbar} from 'notistack';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./Home";
-import Editor from "./Editor";
 import MarkdownLoader from "./MarkdownLoader";
 
 const App = () => {
@@ -32,7 +31,6 @@ const App = () => {
                 <BrowserRouter produceSnackBar={produceSnackBar} darkMode={darkMode}>
                     <Routes>
                         <Route path="/" element={<Home/>}/>
-                        <Route path="editor" element={<Editor/>}/>
                         <Route path="*" element={<MarkdownLoader/>}/>
                     </Routes>
                 </BrowserRouter>
