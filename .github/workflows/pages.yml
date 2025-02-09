@@ -24,13 +24,14 @@ jobs:
           branch: gh-pages
           folder: build
 
-      - name: Copy Create 404 Page
+      - name: Create 404 Page
         run: |
           git checkout gh-pages
           git pull
           cp index.html 404.html
           git add 404.html
-          git commit -m "duplicate index.html to 404.html"
+          git rm index.html
+          git commit -m "create 404 page"
           git push
 
 permissions:
