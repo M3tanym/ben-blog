@@ -67,6 +67,7 @@ const Layout = (props) =>
 	return (
 		<Container>
 			<meta name="theme-color" content={bg} />
+			<title>Blog</title>
 			<Grid
 				container
 				direction={"column"}
