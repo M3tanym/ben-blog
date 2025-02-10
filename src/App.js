@@ -6,8 +6,8 @@ import {CssBaseline} from "@mui/material";
 import {SnackbarProvider, useSnackbar} from 'notistack';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./Home";
-import Editor from "./Editor";
 import MarkdownLoader from "./MarkdownLoader";
+import Editor from "./pages/editor";
 
 const App = () => {
     const darkMode = !useMediaQuery('(prefers-color-scheme: light)');
