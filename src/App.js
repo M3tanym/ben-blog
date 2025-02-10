@@ -24,7 +24,7 @@ const App = () => {
     const {enqueueSnackbar} = useSnackbar();
     const produceSnackBar = (message, variant = "error") => enqueueSnackbar(message, {variant: variant});
     const componentPages = [Editor];
-    console.log('!', componentPages)
+    console.log('!', componentPages.map(item => ('/' + item.name.toLowerCase())))
     return (
         <ThemeProvider theme={theme}>
             <meta name="theme-color" content={metaTheme}/>
@@ -34,7 +34,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<Home/>}/>
                         {componentPages.map(item => (
-                            <Route key={item.name} path={'/' + item.name} element={item()}/>
+                            <Route key={item.name} path={'/' + item.name.toLowerCase()} element={item()}/>
                         ))}
                         <Route path="/*" element={<MarkdownLoader/>}/>
                     </Routes>
