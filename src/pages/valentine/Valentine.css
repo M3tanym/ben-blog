@@ -1,0 +1,104 @@
+.fancy {
+    font-family: "Square Peg", cursive;
+    font-size: 3.1rem;
+    line-height: 0.85em
+}
+
+.main {
+    height: 90vh;
+    margin: 5vh;
+}
+
+
+.wrapper {
+    margin-top: 34vh;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 300px;
+    background-color: #ec5c9d;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+}
+
+.lid {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-right: 150px solid transparent;
+    border-bottom: 100px solid transparent;
+    border-left: 150px solid transparent;
+    transform-origin: top;
+    transition: transform 0.25s linear;
+}
+
+.lid.one {
+    border-top: 100px solid #e54b90;
+    transform: rotateX(0deg);
+    z-index: 3;
+    transition-delay: 0.75s;
+}
+
+.lid.two {
+    border-top: 100px solid #e54b90;
+    transform: rotateX(90deg);
+    z-index: 1;
+    transition-delay: 0.5s;
+}
+
+.envelope {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-top: 100px solid transparent;
+    border-right: 150px solid #f592b1;
+    border-bottom: 100px solid #f69ab3;
+    border-left: 150px solid #ff8dae;
+    z-index: 3;
+}
+
+.letter {
+    position: absolute;
+    top: 0;
+    width: 90%;
+    height: 100%;
+    background-color: #fdd7ba;
+    border-radius: 15px;
+    z-index: 2;
+    transition: 0.6s;
+    text-align: center;
+}
+
+.letter button {
+    font-size: 30px;
+    color: #3B4049;
+    position: relative;
+    margin-top: 30px;
+    z-index: 10;
+}
+
+.wrapper:hover .lid.one {
+    transform: rotateX(90deg);
+    transition-delay: 0s;
+}
+
+.wrapper:hover .lid.two {
+    transform: rotateX(180deg);
+    transition-delay: 0.25s;
+}
+
+.wrapper:hover .letter {
+    transform: translateY(-50px);
+    transition-delay: 0.5s;
+}
+
+.wrapper:hover .letter button {
+    transform: translateY(-10px);
+    transition-delay: 0.1s;
+}

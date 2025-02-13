@@ -5,8 +5,11 @@ const Home = () => {
     return (
         <Container>
             <title>Home</title>
+            <br />
             <Typography variant="h4">
-                🛠️ Home 🏗️
+                🛠️ Home 🏗
+                <br />
+                <p><em>under construction, clearly. check back in a few days (months)</em>🤓</p>
             </Typography>
         </Container>
     );
