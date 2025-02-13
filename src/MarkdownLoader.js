@@ -14,7 +14,7 @@ const MarkdownLoader = () => {
     useEffect(() => {
         fetch(markdownPath)
             .then(response => {
-                if (response.status === 200) {
+                if (response.ok) {
                     return response.text();
                 }
                 return null;

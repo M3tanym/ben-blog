@@ -21,39 +21,44 @@ $pink: #ff8081;
   float: left;
 }
 
-.mainTulip{
+.mainTulip {
   transform: scale(.9);
   left: 100px;
   top: 180px;
 }
 
-.leftBabyTulip{
-  transform:scale(.4);
+.leftBabyTulip {
+  transform: scale(.4);
   left: -13px;
   top: 210px;
-  .rightStemLeaf{
+
+  .rightStemLeaf {
     top: 105px;
     transform: rotate(-32deg);
     left: -15px;
   }
-  leftStemLeaf{
+
+  .leftStemLeaf {
     transform: scale(0.7) rotate(90deg);
     left: -54px;
   }
 }
 
-.rightBabyTulip{
+.rightBabyTulip {
   transform: scale(.5);
   left: 240px;
   top: 190px;
-  .tulipHead{
+
+  .tulipHead {
     transform: rotate(23deg);
     left: -80px;
   }
-  .leftStemLeaf{
+
+  .leftStemLeaf {
     visibility: hidden;
   }
-  .rightStemLeaf{
+
+  .rightStemLeaf {
     top: 70px;
     transform: rotate(-32deg);
     left: -15px;
@@ -135,7 +140,7 @@ $pink: #ff8081;
   left: -33px;
 }
 
-$hair-size:30px;
+$hair-size: 30px;
 .tulipHair {
   width: 0;
   height: 0;

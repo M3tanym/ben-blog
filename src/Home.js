@@ -1,16 +1,19 @@
 import React from 'react';
 import {Container, Typography} from "@mui/material";
+import PageList from "./PageList";
 
 const Home = () => {
     return (
         <Container>
-            <title>Home</title>
+            <title>Ben's Blog</title>
             <br />
             <Typography variant="h4">
-                🛠️ Home 🏗
-                <br />
-                <p><em>under construction, clearly. check back in a few days (months)</em>🤓</p>
+                Blog Home
             </Typography>
+            <Typography variant="h6">
+            <p><em>🏗 under construction. check back in a few days (or months)</em> 🤓</p>
+            </Typography>
+            <PageList />
         </Container>
     );
 };
