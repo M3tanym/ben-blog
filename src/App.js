@@ -26,15 +26,15 @@ const App = () => {
     const produceSnackBar = (message, variant = "error") => enqueueSnackbar(message, {variant: variant});
     const inner = () => {
         if (window.location.host === 'valentine.bengillett.com') {
-            return (<Valentine/>);
+            return (<Valentine darkMode={darkMode}/>);
         }
         return (
             <BrowserRouter produceSnackBar={produceSnackBar} darkMode={darkMode}>
                 <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="*" element={<MarkdownLoader/>}/>
-                    <Route path="editor" element={<Editor/>}/>
-                    <Route path="valentine" element={<Valentine/>}/>
+                    <Route path="/" element={<Home darkMode={darkMode}/>}/>
+                    <Route path="*" element={<MarkdownLoader darkMode={darkMode}/>}/>
+                    <Route path="editor" element={<Editor darkMode={darkMode}/>}/>
+                    <Route path="valentine" element={<Valentine darkMode={darkMode}/>}/>
                 </Routes>
             </BrowserRouter>
         );

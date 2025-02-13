@@ -1,14 +1,21 @@
 .fancy {
     font-family: "Square Peg", cursive;
     font-size: 3.1rem;
-    line-height: 0.85em
+    line-height: 0.9em;
+    margin-top: 40px;
 }
 
 .main {
     height: 90vh;
-    margin: 5vh;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
+.button {
+    font-size: 20px;
+    margin: 10px !important;
+}
 
 .wrapper {
     margin-top: 34vh;
@@ -79,8 +86,9 @@
     font-size: 30px;
     color: #3B4049;
     position: relative;
-    margin-top: 30px;
+    margin-top: 20px;
     z-index: 10;
+    border-radius: 10px;
 }
 
 .wrapper:hover .lid.one {
@@ -102,3 +110,10 @@
     transform: translateY(-10px);
     transition-delay: 0.1s;
 }
+
+.wrapper button:hover {
+    border-color: #f817a4;
+    background-color: #ee9d40;
+}
+
+
