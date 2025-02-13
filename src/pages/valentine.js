@@ -9,9 +9,9 @@ const Valentine = (props) => {
     const [fontSize, setFontSize] = useState(20);
     const imageFilter = props.darkMode ? "invert(100%)" : "";
     const oops = [
-        'oops1',
-        'ooops2',
-        'oooopps3'
+        'Whoops, I think you meant to click yes!',
+        'Oops, did you click the wrong one?',
+        'Are you sure??'
     ];
     function getOops() {
       return oops[Math.floor(Math.random() * oops.length)];
