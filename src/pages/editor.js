@@ -6,11 +6,13 @@ import {useTheme} from '@mui/styles';
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
+import remarkGemoji from 'remark-gemoji'
 import rehypeKatex from 'rehype-katex'
 import rehypeRaw from 'rehype-raw'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {oneDark as darkCode, oneLight as lightCode} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import 'katex/dist/katex.min.css'
+import StyledLink from "../StyledLink";
 
 const StyledTextarea = styled(TextareaAutosize)(
     ({theme}) => `
@@ -18,7 +20,7 @@ const StyledTextarea = styled(TextareaAutosize)(
     font-family: monospace;
     font-size: 0.875rem;
     font-weight: 400;
-    line-height: 0.95;
+    line-height: 1;
     padding: 8px 12px;
     border-radius: 8px;
     color: ${theme.palette.mode === 'dark' ? '#C7D0DD' : '#1C2025'};
@@ -80,6 +82,7 @@ const StyledContainer = styled(Container)(
         max-width: 100% !important;
         overflow-x: scroll !important;
         overflow-y: hidden !important;
+        padding-bottom: 12px;
     }
    
     pre > div {
@@ -89,16 +92,6 @@ const StyledContainer = styled(Container)(
     
     blockquote > p {
         max-width: 100% !important;
-    }
-`);
-
-const StyledLink = styled('a')(
-    ({theme}) => `
-    color: ${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'};
-    
-    &:hover {
-        font-weight: bold;
-        text-decoration: none;
     }
 `);
 
@@ -127,13 +120,13 @@ const text = `
 
 ### little heading
 
-_italic_ text
+_italic_ *text*
 
-**bold** text
+__bold__ **text**
 
 ~strikethrough~ text
 
-emoji:  🏙️🏕🛫🥏🚲
+emoji and special characters:  🏙️🏕🛫🥏🚲 &euro;&copy; :pizza:
 
 blockquote text:
 > “This is the real secret of life — to be completely engaged with what you are doing 
@@ -143,8 +136,8 @@ blockquote text:
 lists and links:
 - [standard link](https://blog.bengillett.com) 
 - quick link: https://bengillett.com
-- [x] this one has a checkbox
-- [ ] add something here
+1. [x] this one has a checkbox
+2. [ ] add something here
 
 math inline: $y = \\tan\\left(\\frac{\\theta}{\\pi}\\right)$
 
@@ -171,18 +164,24 @@ def socket_send(self, message: str) -> str:
     return self._send(message)
 \`\`\`
 
+divider:
+
+---------
+
 table:
 | City | Average Annual Precipitation |
 | ---------: | :------------------- |
 | Seattle | 39.3 in |
-| San Diego | 10.2 inches |
+| San Diego | 10.2 in |
 | Denver | 15.6 in |
 | Dallas | 37.1 in |
 | Minneapolis | 30.4 in |
 | New York City  | 44.7 in |
 
-images:
+html:
+<span style="font-family: cursive;">fancy font</span>
 
+images:
 
 ![mountains](https://www.svgrepo.com/show/272275/mountain-mountains.svg "!100px")
 <img alt="train" src="https://www.svgrepo.com/show/375916/train.svg" height="100px"/>
@@ -204,7 +203,7 @@ const Editor = () => {
             <StyledTextarea value={markdownContent} onChange={event => setMarkdownContent(event.target.value)}/>
             <br/>
             <Markdown children={markdownContent}
-                      remarkPlugins={[remarkGfm, remarkMath]}
+                      remarkPlugins={[remarkGfm, remarkMath, remarkGemoji]}
                       rehypePlugins={[rehypeKatex, rehypeRaw]}
                       components={{
                           code({node, inline, className, children, ...props}) {

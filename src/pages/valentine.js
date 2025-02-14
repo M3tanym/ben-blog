@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Button from '@mui/material/Button';
 import "./valentine/valentine.css"
-import "./valentine/tulip.scss"
 import Sheep from "./valentine/sheep.svg";
 
 const Valentine = (props) => {
@@ -13,8 +12,9 @@ const Valentine = (props) => {
         'Oops, did you click the wrong one?',
         'Are you sure??'
     ];
+
     function getOops() {
-      return oops[Math.floor(Math.random() * oops.length)];
+        return oops[Math.floor(Math.random() * oops.length)];
     }
 
     const letterPage = () => {
@@ -36,10 +36,10 @@ const Valentine = (props) => {
     const yayPage = () => {
         return (
             <div className="main">
-                <br />
-                <br />
+                <br/>
+                <br/>
                 <div className="fancy">Yay!! 💘💖🥰</div>
-                <br />
+                <br/>
                 <p>I love you!!</p>
                 <img src={Sheep} alt={"valentines day sheep"} style={{width: "100vw", filter: imageFilter}}/>
             </div>
@@ -59,9 +59,9 @@ const Valentine = (props) => {
                             onClick={() => setPage(2)}>Yes 🥰</Button>
                     <Button className="button" size="large" color="secondary" variant="contained"
                             onClick={() => {
-                        alert(getOops());
-                        setFontSize(fontSize + 10);
-                    }}>No 🥺</Button>
+                                alert(getOops());
+                                setFontSize(fontSize + 10);
+                            }}>No 🥺</Button>
                 </center>
 
                 <div className="container">

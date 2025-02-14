@@ -1,12 +1,5 @@
 import React, {useEffect, useState} from 'react';
-
-/*
-a {
-    color: #a29898;
-    text-decoration: none;
-    font-size: 18px;
-}
- */
+import StyledLink from "./StyledLink";
 
 const PageList = () => {
     const [pages, setPages] = useState([]);
@@ -32,7 +25,7 @@ const PageList = () => {
         <>
             <p>pages:</p>
             <ul>
-                { pages.map(page => {return <li key={page}><a href={'/' + page}>{page}</a></li>}) }
+                { pages.map(page => {return <li key={page}><StyledLink href={'/' + page}>{page}</StyledLink></li>}) }
             </ul>
 
         </>
