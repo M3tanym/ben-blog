@@ -70,7 +70,7 @@ const StyledSyntaxHighlighter = styled(SyntaxHighlighter)(
 const StyledContainer = styled(Container)(
     () => `
     .katex-display > .katex {
-        max-width: 90% !important;
+        max-width: 100% !important;
         white-space: normal !important;
         text-wrap-mode: nowrap !important;
     }
