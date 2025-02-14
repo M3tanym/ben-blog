@@ -7,6 +7,7 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
+import rehypeRaw from 'rehype-raw'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {oneDark as darkCode, oneLight as lightCode} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import 'katex/dist/katex.min.css'
@@ -180,9 +181,12 @@ table:
 | Minneapolis | 30.4 in |
 | New York City  | 44.7 in |
 
-image:
+images:
 
-![coffee](https://www.svgrepo.com/show/272275/mountain-mountains.svg "!100px")
+
+![mountains](https://www.svgrepo.com/show/272275/mountain-mountains.svg "!100px")
+<img alt="train" src="https://www.svgrepo.com/show/375916/train.svg" height="100px"/>
+<img alt="city" src="https://www.svgrepo.com/show/286065/city-river.svg" height="100px"/>
 `;
 
 const Editor = () => {
@@ -201,7 +205,7 @@ const Editor = () => {
             <br/>
             <Markdown children={markdownContent}
                       remarkPlugins={[remarkGfm, remarkMath]}
-                      rehypePlugins={[rehypeKatex]}
+                      rehypePlugins={[rehypeKatex, rehypeRaw]}
                       components={{
                           code({node, inline, className, children, ...props}) {
                               const match = /language-(\w+)/.exec(className || '')
@@ -222,9 +226,10 @@ const Editor = () => {
                           img({node, ...props}) {
                               let title = node.properties.title;
                               let width = null;
-                              const isSvg = node.properties.src.split('.').slice(-1)[0] === 'svg'
-                              const filter = (darkMode && isSvg) ? 'invert(100%)' : '';
+                              let filter ='';
                               if (title && title[0] === '!') {
+                                  const isSvg = node.properties.src.split('.').slice(-1)[0] === 'svg'
+                                  filter = (darkMode && isSvg) ? 'invert(100%)' : '';
                                   width = title.substring(1) + ' !important';
                                   title = null;
                               }
