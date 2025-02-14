@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import "./PageList.css"
+
+/*
+a {
+    color: #a29898;
+    text-decoration: none;
+    font-size: 18px;
+}
+ */
 
 const PageList = () => {
     const [pages, setPages] = useState([]);
