@@ -4,7 +4,7 @@ import StyledLink from "./StyledLink";
 const PageList = () => {
     const [pages, setPages] = useState([]);
     useEffect(() => {
-        fetch('https://api.github.com/repos/M3tanym/ben-blog/git/trees/2f86375dd342941c812c3f5cad8906cd5624b55b')
+        fetch('https://api.github.com/repos/M3tanym/ben-blog/git/trees/main?recursive=true')
             .then(response => {
                 if (!response.ok) {
                     throw new Error("error fetching pages: " + response.status);
@@ -13,7 +13,14 @@ const PageList = () => {
             }).then(json => {
                 const reduced = json.tree.reduce((result, page) => {
                     if (page.type === 'blob') {
-                        result.push(page.path.split('.')[0]);
+                        const base = page.path.substring(0, 10);
+                        if (base === 'src/pages/') {
+                            const path = page.path.substring(10);
+                            if (!path.includes('/')) {
+                                const name = path.split('.')[0];
+                                result.push(name);
+                            }
+                        }
                     }
                     return result;
                 }, []);
