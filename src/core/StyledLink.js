@@ -1,4 +1,4 @@
-import {styled} from "@mui/system";
+import {styled} from '@mui/system';
 
 const StyledLink = styled('a')(
     ({theme}) => `

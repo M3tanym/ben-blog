@@ -10,7 +10,7 @@ import rehypeRaw from 'rehype-raw'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {oneDark as darkCode, oneLight as lightCode} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import 'katex/dist/katex.min.css'
-import StyledLink from "./StyledLink";
+import StyledLink from './StyledLink';
 
 const StyledCode = styled('code')(
     ({theme}) => `
@@ -52,7 +52,7 @@ const StyledMarkdown = styled(Markdown)(
         max-width: 100% !important;
         overflow-x: scroll !important;
         overflow-y: hidden !important;
-        padding-bottom: 12px;
+        padding-bottom: 14px;
     }
    
     pre > div {
@@ -90,49 +90,49 @@ const MarkdownRenderer = (props) => {
     const darkMode = theme.palette.mode === 'dark';
     return (
         <StyledMarkdown children={props.markdown}
-              remarkPlugins={[remarkGfm, remarkMath, remarkGemoji]}
-              rehypePlugins={[rehypeKatex, rehypeRaw]}
-              components={{
-                  code({node, inline, className, children, ...props}) {
-                      const match = /language-(\w+)/.exec(className || '')
-                      return !inline && match ? (
-                          <StyledSyntaxHighlighter
-                              children={String(children).replace(/\n$/, '')}
-                              style={darkMode ? darkCode : lightCode}
-                              language={match[1]}
-                              PreTag={'div'}
-                              {...props}
-                          />
-                      ) : (
-                          <StyledCode className={((className || '') + ' styledCode')} {...props}>
-                              {children}
-                          </StyledCode>
-                      )
-                  },
-                  img({node, ...props}) {
-                      let title = node.properties.title;
-                      let width = null;
-                      let filter ='';
-                      if (title && title[0] === '!') {
-                          const isSvg = node.properties.src.split('.').slice(-1)[0] === 'svg'
-                          filter = (darkMode && isSvg) ? 'invert(100%)' : '';
-                          width = title.substring(1) + ' !important';
-                          title = null;
-                      }
-                      return <img alt={''} {...props} title={title} width={width}
-                                  style={{filter: filter}}/>
-                  },
-                  blockquote({...props}) {
-                      return <StyledBlockquote {...props} />
-                  },
-                  a({...props}) {
-                      return <StyledLink {...props} />
-                  },
-                  table({...props}) {
-                      return <StyledTable {...props} />
-                  }
-              }}
-    />);
+                        remarkPlugins={[remarkGfm, remarkMath, remarkGemoji]}
+                        rehypePlugins={[rehypeKatex, rehypeRaw]}
+                        components={{
+                            code({node, inline, className, children, ...props}) {
+                                const match = /language-(\w+)/.exec(className || '')
+                                return !inline && match ? (
+                                    <StyledSyntaxHighlighter
+                                        children={String(children).replace(/\n$/, '')}
+                                        style={darkMode ? darkCode : lightCode}
+                                        language={match[1]}
+                                        PreTag={'div'}
+                                        {...props}
+                                    />
+                                ) : (
+                                    <StyledCode className={((className || '') + ' styledCode')} {...props}>
+                                        {children}
+                                    </StyledCode>
+                                )
+                            },
+                            img({node, ...props}) {
+                                let title = node.properties.title;
+                                let param = null;
+                                let filter = '';
+                                if (title && title[0] === '!') {
+                                    const isSvg = node.properties.src.split('.').slice(-1)[0] === 'svg'
+                                    filter = (darkMode && isSvg) ? 'invert(100%)' : '';
+                                    param = title.substring(1) + ' !important';
+                                    title = null;
+                                }
+                                return <img alt={''} height={param} {...props} title={title}
+                                            style={{filter: filter}}/>
+                            },
+                            blockquote({...props}) {
+                                return <StyledBlockquote {...props} />
+                            },
+                            a({...props}) {
+                                return <StyledLink {...props} />
+                            },
+                            table({...props}) {
+                                return <StyledTable {...props} />
+                            }
+                        }}
+        />);
 }
 
 export default MarkdownRenderer;

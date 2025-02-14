@@ -61,10 +61,10 @@ table:
 | New York City  | 44.7 in |
 
 html:
-<span style="font-family: cursive;">fancy font</span>
+<span style="font-family: cursive;"> fancy font</span>
 
 images:
 
 ![mountains](https://www.svgrepo.com/show/272275/mountain-mountains.svg "!100px")
 <img alt="train" src="https://www.svgrepo.com/show/375916/train.svg" height="100px"/>
-<img alt="city" src="https://www.svgrepo.com/show/286065/city-river.svg" height="100px"/>
+<img alt="city" src="https://www.svgrepo.com/show/286065/city-river.svg" width="100px"/>

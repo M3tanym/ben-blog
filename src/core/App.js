@@ -1,14 +1,13 @@
-import React, {useMemo} from "react";
-
+import React, {useMemo} from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {ThemeProvider, createTheme} from '@mui/material/styles';
-import {CssBaseline} from "@mui/material";
+import {CssBaseline} from '@mui/material';
 import {SnackbarProvider, useSnackbar} from 'notistack';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Home from "./Home";
-import Editor from "../pages/editor";
-import Valentine from "../pages/valentine";
-import PageLoader from "./PageLoader";
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Home from './Home';
+import Editor from '../pages/editor';
+import Valentine from '../pages/valentine';
+import PageLoader from './PageLoader';
 
 const App = () => {
     const darkMode = !useMediaQuery('(prefers-color-scheme: light)');
@@ -21,9 +20,9 @@ const App = () => {
             }),
         [darkMode],
     );
-    const metaTheme = darkMode ? "#303030" : "#fafafa";
+    const metaTheme = darkMode ? '#121212' : '#ffffff';
     const {enqueueSnackbar} = useSnackbar();
-    const produceSnackBar = (message, variant = "error") => enqueueSnackbar(message, {variant: variant});
+    const produceSnackBar = (message, variant = 'error') => enqueueSnackbar(message, {variant: variant});
     const OverrideRouter = () => {
         if (window.location.host === 'valentine.bengillett.com') {
             return (<Valentine/>);
@@ -31,22 +30,20 @@ const App = () => {
         return (
             <BrowserRouter produceSnackBar={produceSnackBar}>
                 <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="*" element={<PageLoader/>}/>
-                    <Route path="editor" element={<Editor/>}/>
-                    <Route path="valentine" element={<Valentine/>}/>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='*' element={<PageLoader/>}/>
+                    <Route path='editor' element={<Editor/>}/>
+                    <Route path='valentine' element={<Valentine/>}/>
                 </Routes>
             </BrowserRouter>
         );
     }
     return (
         <>
-            <meta name="theme-color" content={metaTheme}/>
+            <meta name='theme-color' content={metaTheme}/>
             <ThemeProvider theme={theme}>
                 <CssBaseline/>
                 <SnackbarProvider maxSnack={3} preventDuplicate>
-                    {/*calling the function like this instead of a component
-                    prevents an unpleasant re-render when the theme changes...*/}
                     {OverrideRouter()}
                 </SnackbarProvider>
             </ThemeProvider>

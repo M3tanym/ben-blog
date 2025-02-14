@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
-import NotFound from "./NotFound";
-import PageRenderer from "./PageRenderer";
+import {useParams} from 'react-router-dom';
+import NotFound from './NotFound';
+import PageRenderer from './PageRenderer';
 
 const PageLoader = () => {
     const pageName = useParams()['*'];
     const basePath = window.location.host === 'blog.bengillett.com' ?
         'https://raw.githubusercontent.com/M3tanym/ben-blog/refs/heads/main/src/pages/' :
-        'http://localhost:8080/src/pages/';
+        window.location.protocol + '//' + window.location.hostname + ':8080/src/pages/';
     const markdownPath = basePath + pageName + '.md';
     const [markdownContent, setMarkdownContent] = useState('');
     useEffect(() => {

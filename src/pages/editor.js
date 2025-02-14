@@ -1,14 +1,14 @@
-import React, {useState} from "react";
-import {Container, Typography} from "@mui/material";
-import {styled} from "@mui/system";
-import {TextareaAutosize} from "@mui/base";
-import MarkdownRenderer from "../core/MarkdownRenderer";
+import React, {useState} from 'react';
+import {Container, Typography} from '@mui/material';
+import {styled} from '@mui/system';
+import {TextareaAutosize} from '@mui/base';
+import MarkdownRenderer from '../core/MarkdownRenderer';
 
 const StyledTextarea = styled(TextareaAutosize)(
     ({theme}) => `
     width: 100%;
     font-family: monospace;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1;
     padding: 8px 12px;
