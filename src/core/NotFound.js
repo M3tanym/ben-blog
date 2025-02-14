@@ -1,12 +1,11 @@
 import React from 'react';
 import {Container, Typography} from "@mui/material";
 
-const NotFound = () => {
+const NotFound = (props) => {
     return (
-        <Container>
-            <title>Not Found</title>
+        <Container maxWidth={'md'}>
             <Typography variant="h4">
-                No entry exists by this name ☹️
+                No entry exists by this name ({props.title}) ☹️
             </Typography>
         </Container>
     );

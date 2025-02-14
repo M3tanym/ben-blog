@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {Container} from "@mui/material";
 import {useParams} from "react-router-dom";
-import Markdown from "react-markdown";
 import NotFound from "./NotFound";
+import PageRenderer from "./PageRenderer";
 
-const MarkdownLoader = () => {
+const PageLoader = () => {
     const pageName = useParams()['*'];
     const basePath = window.location.host === 'blog.bengillett.com' ?
         'https://raw.githubusercontent.com/M3tanym/ben-blog/refs/heads/main/src/pages/' :
         'http://localhost:8080/src/pages/';
     const markdownPath = basePath + pageName + '.md';
-    const [fileText, setFileText] = useState('');
+    const [markdownContent, setMarkdownContent] = useState('');
     useEffect(() => {
         fetch(markdownPath)
             .then(response => {
@@ -18,20 +17,17 @@ const MarkdownLoader = () => {
                     return response.text();
                 }
                 return null;
-            }).then(text => setFileText(text));
+            }).then(text => setMarkdownContent(text));
     }, [markdownPath]);
-
-    if (fileText != null) {
-        return (
-            <Container>
-                <title>{pageName}</title>
-                <br/>
-                <Markdown>{fileText}</Markdown>
-            </Container>
-        );
-    }
-
-    return <NotFound/>;
+    const pageFound = markdownContent != null;
+    return (
+        <>
+            <title>{pageFound ? pageName : 'Not Found'}</title>
+            {pageFound ?
+                <PageRenderer title={pageName} markdown={markdownContent}/> :
+                <NotFound title={pageName}/>}
+        </>
+    );
 };
 
-export default MarkdownLoader;
+export default PageLoader;

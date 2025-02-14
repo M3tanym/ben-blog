@@ -6,9 +6,9 @@ import {CssBaseline} from "@mui/material";
 import {SnackbarProvider, useSnackbar} from 'notistack';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./Home";
-import MarkdownLoader from "./MarkdownLoader";
-import Editor from "./pages/editor";
-import Valentine from "./pages/valentine";
+import Editor from "../pages/editor";
+import Valentine from "../pages/valentine";
+import PageLoader from "./PageLoader";
 
 const App = () => {
     const darkMode = !useMediaQuery('(prefers-color-scheme: light)');
@@ -24,30 +24,33 @@ const App = () => {
     const metaTheme = darkMode ? "#303030" : "#fafafa";
     const {enqueueSnackbar} = useSnackbar();
     const produceSnackBar = (message, variant = "error") => enqueueSnackbar(message, {variant: variant});
-    const inner = () => {
+    const OverrideRouter = () => {
         if (window.location.host === 'valentine.bengillett.com') {
-            return (<Valentine darkMode={darkMode}/>);
+            return (<Valentine/>);
         }
         return (
-            <BrowserRouter produceSnackBar={produceSnackBar} darkMode={darkMode}>
+            <BrowserRouter produceSnackBar={produceSnackBar}>
                 <Routes>
-                    <Route path="/" element={<Home darkMode={darkMode}/>}/>
-                    <Route path="*" element={<MarkdownLoader darkMode={darkMode}/>}/>
-                    <Route path="editor" element={<Editor darkMode={darkMode}/>}/>
-                    <Route path="valentine" element={<Valentine darkMode={darkMode}/>}/>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="*" element={<PageLoader/>}/>
+                    <Route path="editor" element={<Editor/>}/>
+                    <Route path="valentine" element={<Valentine/>}/>
                 </Routes>
             </BrowserRouter>
         );
     }
-
     return (
-        <ThemeProvider theme={theme}>
+        <>
             <meta name="theme-color" content={metaTheme}/>
-            <CssBaseline/>
-            <SnackbarProvider maxSnack={3} preventDuplicate>
-                {inner()}
-            </SnackbarProvider>
-        </ThemeProvider>
+            <ThemeProvider theme={theme}>
+                <CssBaseline/>
+                <SnackbarProvider maxSnack={3} preventDuplicate>
+                    {/*calling the function like this instead of a component
+                    prevents an unpleasant re-render when the theme changes...*/}
+                    {OverrideRouter()}
+                </SnackbarProvider>
+            </ThemeProvider>
+        </>
     );
 };
 

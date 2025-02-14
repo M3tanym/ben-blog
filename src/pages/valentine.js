@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import Button from '@mui/material/Button';
-import "./valentine/valentine.css"
-import Sheep from "./valentine/sheep.svg";
+import './valentine/valentine.css'
+import Sheep from './valentine/sheep.svg';
+import {useTheme} from '@mui/styles';
 
-const Valentine = (props) => {
+const Valentine = () => {
     const [page, setPage] = useState(0);
     const [fontSize, setFontSize] = useState(20);
-    const imageFilter = props.darkMode ? "invert(100%)" : "";
+    const theme = useTheme();
+    const darkMode = theme.palette.mode === 'dark';
+    const imageFilter = darkMode ? 'invert(100%)' : '';
     const oops = [
         'Whoops, I think you meant to click yes!',
         'Oops, did you click the wrong one?',
