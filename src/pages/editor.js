@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-
-import {Container, Typography} from "@mui/material";
-import {Grid, styled} from '@mui/system';
+import {Container, Typography} from '@mui/material'
+import {styled} from '@mui/system';
 import {TextareaAutosize} from '@mui/base';
+import {useTheme} from '@mui/styles';
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
@@ -10,7 +10,6 @@ import rehypeKatex from 'rehype-katex'
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {oneDark as darkCode, oneLight as lightCode} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import 'katex/dist/katex.min.css'
-import {useTheme} from "@mui/styles";
 
 const StyledTextarea = styled(TextareaAutosize)(
     ({theme}) => `
@@ -40,7 +39,7 @@ const StyledTextarea = styled(TextareaAutosize)(
     }
 `);
 
-const StyledCode = styled("code")(
+const StyledCode = styled('code')(
     ({theme}) => `
     &.styledCode {
         font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
@@ -55,7 +54,7 @@ const StyledCode = styled("code")(
     }
 `);
 
-const StyledBlockquote = styled("blockquote")(
+const StyledBlockquote = styled('blockquote')(
     ({theme}) => `
     margin: 0;
     padding: 0 1em;
@@ -64,12 +63,12 @@ const StyledBlockquote = styled("blockquote")(
 `);
 
 const StyledSyntaxHighlighter = styled(SyntaxHighlighter)(
-    ({theme}) => `
+    () => `
     font-size: 90%;
 `);
 
 const StyledContainer = styled(Container)(
-    ({theme}) => `
+    () => `
     .katex-display > .katex {
         max-width: 90% !important;
         white-space: normal !important;
@@ -77,18 +76,22 @@ const StyledContainer = styled(Container)(
     }
     
     .katex-display {
-        max-width: 90vw !important;
+        max-width: 100% !important;
         overflow-x: scroll !important;
         overflow-y: hidden !important;
     }
    
     pre > div {
-        max-width: 90vw !important;
+        max-width: 100% !important;
         overflow-x: scroll !important;
+    }
+    
+    blockquote > p {
+        max-width: 100% !important;
     }
 `);
 
-const StyledLink = styled("a")(
+const StyledLink = styled('a')(
     ({theme}) => `
     color: ${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'};
     
@@ -98,7 +101,7 @@ const StyledLink = styled("a")(
     }
 `);
 
-const StyledTable = styled("table")(
+const StyledTable = styled('table')(
     ({theme}) => `
     border-collapse: collapse;
     color: ${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'};
@@ -187,67 +190,58 @@ const Editor = () => {
     const theme = useTheme();
     const darkMode = theme.palette.mode === 'dark';
     return (
-        <StyledContainer>
+        <StyledContainer maxWidth={'md'}>
             <title>Markdown Editor</title>
-            <Grid
-                container
-                alignContent={"center"}
-                alignItems={"center"}
-                spacing={1}
-            >
-                <Grid xs={10} md={6}>
-                    <br/>
-                    <Typography variant="h5">
-                        Enter some Markdown:
-                    </Typography>
-                    <br/>
-                    <StyledTextarea value={markdownContent} onChange={event => setMarkdownContent(event.target.value)}/>
-                    <br/>
-                    <Markdown children={markdownContent}
-                              remarkPlugins={[remarkGfm, remarkMath]}
-                              rehypePlugins={[rehypeKatex]}
-                              components={{
-                                  code({node, inline, className, children, ...props}) {
-                                      const match = /language-(\w+)/.exec(className || '')
-                                      return !inline && match ? (
-                                          <StyledSyntaxHighlighter
-                                              children={String(children).replace(/\n$/, '')}
-                                              style={darkMode ? darkCode : lightCode}
-                                              language={match[1]}
-                                              PreTag="div"
-                                              {...props}
-                                          />
-                                      ) : (
-                                          <StyledCode className={((className || '') + ' styledCode')} {...props}>
-                                              {children}
-                                          </StyledCode>
-                                      )
-                                  },
-                                  img({node, ...props}) {
-                                      let title = node.properties.title;
-                                      let width = null;
-                                      const isSvg = node.properties.src.split('.').slice(-1)[0] === 'svg'
-                                      const filter = (darkMode && isSvg) ? "invert(100%)" : "";
-                                      if (title && title[0] === '!') {
-                                          width = title.substring(1) + ' !important';
-                                          title = null;
-                                      }
-                                      return <img alt={''} {...props} title={title} width={width}
-                                                  style={{filter: filter}}/>
-                                  },
-                                  blockquote({...props}) {
-                                      return <StyledBlockquote {...props} />
-                                  },
-                                  a({...props}) {
-                                      return <StyledLink {...props} />
-                                  },
-                                  table({...props}) {
-                                      return <StyledTable {...props} />
-                                  }
-                              }}
-                    />
-                </Grid>
-            </Grid>
+            <br/>
+            <Typography variant={'h5'}>
+                Enter some Markdown:
+            </Typography>
+            <br/>
+            <StyledTextarea value={markdownContent} onChange={event => setMarkdownContent(event.target.value)}/>
+            <br/>
+            <Markdown children={markdownContent}
+                      remarkPlugins={[remarkGfm, remarkMath]}
+                      rehypePlugins={[rehypeKatex]}
+                      components={{
+                          code({node, inline, className, children, ...props}) {
+                              const match = /language-(\w+)/.exec(className || '')
+                              return !inline && match ? (
+                                  <StyledSyntaxHighlighter
+                                      children={String(children).replace(/\n$/, '')}
+                                      style={darkMode ? darkCode : lightCode}
+                                      language={match[1]}
+                                      PreTag={'div'}
+                                      {...props}
+                                  />
+                              ) : (
+                                  <StyledCode className={((className || '') + ' styledCode')} {...props}>
+                                      {children}
+                                  </StyledCode>
+                              )
+                          },
+                          img({node, ...props}) {
+                              let title = node.properties.title;
+                              let width = null;
+                              const isSvg = node.properties.src.split('.').slice(-1)[0] === 'svg'
+                              const filter = (darkMode && isSvg) ? 'invert(100%)' : '';
+                              if (title && title[0] === '!') {
+                                  width = title.substring(1) + ' !important';
+                                  title = null;
+                              }
+                              return <img alt={''} {...props} title={title} width={width}
+                                          style={{filter: filter}}/>
+                          },
+                          blockquote({...props}) {
+                              return <StyledBlockquote {...props} />
+                          },
+                          a({...props}) {
+                              return <StyledLink {...props} />
+                          },
+                          table({...props}) {
+                              return <StyledTable {...props} />
+                          }
+                      }}
+            />
         </StyledContainer>
     )
 };
