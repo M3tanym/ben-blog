@@ -17,27 +17,48 @@ const StyledCode = styled('code')(
     &.styledCode {
         font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
         font-size: 85%;
+        line-height: 120%;
         margin: 0;
-        padding: .2em .4em;
+        padding: 0em .2em;
         white-space: break-spaces;
-        border-radius: 6px;
+        border-radius: 3px;
         display: inline-block;
         color: ${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'};
         background-color: ${theme.palette.mode === 'dark' ? '#282C34' : '#ECECEC'};
     }
 `);
 
-const StyledBlockquote = styled('blockquote')(
-    ({theme}) => `
-    margin: 0;
-    padding: 0 1em;
-    color: ${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'};
-    border-left: .28em solid ${theme.palette.mode === 'dark' ? '#282C34' : '#ECECEC'};
-`);
-
 const StyledSyntaxHighlighter = styled(SyntaxHighlighter)(
     () => `
     font-size: 90%;
+`);
+
+const StyledBlockquote = styled('blockquote')(
+    ({theme}) => `
+    margin: 0;
+    padding: 0em 1em;
+    color: ${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'};
+    border-left: .28em solid ${theme.palette.mode === 'dark' ? '#282C34' : '#c7c7c7'};
+`);
+
+const StyledTable = styled('table')(
+    ({theme}) => `
+    border-collapse: collapse;
+    color: ${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'};
+
+    & th, td {
+        border: 1px solid ${theme.palette.mode === 'dark' ? '#9d9d9d' : '#3a3a3a'};
+        padding: 4px;
+        text-align: left;
+    }
+    
+    & th {
+        background-color: ${theme.palette.mode === 'dark' ? '#282C34' : '#b6b6b6'};
+    }
+    
+    & tr:hover {
+        background-color: ${theme.palette.mode === 'dark' ? '#333333' : '#ECECEC'};
+    }
 `);
 
 const StyledMarkdown = styled(Markdown)(
@@ -63,26 +84,16 @@ const StyledMarkdown = styled(Markdown)(
     blockquote > p {
         max-width: 100% !important;
     }
-`);
-
-const StyledTable = styled('table')(
-    ({theme}) => `
-    border-collapse: collapse;
-    color: ${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'};
-
-    & th, td {
-        border: 1px solid ${theme.palette.mode === 'dark' ? '#9d9d9d' : '#000000'};
-        padding: 4px;
-        text-align: left;
+    
+    & p, & li {
+        font-family: "Source Serif 4", Georgia, Cambria, "Times New Roman", Times, serif;
+        letter-spacing: -0.003em;
+        line-height: 32px;
+        font-size: 20px;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
     }
     
-    & th {
-        background-color: ${theme.palette.mode === 'dark' ? '#282C34' : '#a9a9a9'};
-    }
-    
-    & tr:hover {
-        background-color: ${theme.palette.mode === 'dark' ? '#333333' : '#ECECEC'};
-    }
 `);
 
 const MarkdownRenderer = (props) => {

@@ -11,8 +11,9 @@ __bold__ **text**
 emoji and special characters:  🏙️🏕🛫🥏🚲 &euro;&copy; :pizza:
 
 blockquote text:
-> “This is the real secret of life — to be completely engaged with what you are doing
-> in the here and now. And instead of calling it work, realize it is play.”
+> "This is the real secret of life — to be completely engaged with what you are doing
+> in the here and now. And instead of calling it work, realize it is play."
+> 
 > ― Alan Watts
 
 lists and links:
@@ -35,7 +36,7 @@ code inline: `hello-world`
 code block:
 ```
 {
-   "markdown": 100.0,
+    "markdown": 100.0,
     "code": true
 }
 ```
@@ -51,14 +52,15 @@ divider:
 ---------
 
 table:
-| City | Average Annual Precipitation |
-| ---------: | :------------------- |
-| Seattle | 39.3 in |
-| San Diego | 10.2 in |
-| Denver | 15.6 in |
-| Dallas | 37.1 in |
-| Minneapolis | 30.4 in |
-| New York City  | 44.7 in |
+
+|          City | Average Annual Precipitation |
+|--------------:|:-----------------------------|
+|       Seattle | 39.3 in                      |
+|     San Diego | 10.2 in                      |
+|        Denver | 15.6 in                      |
+|        Dallas | 37.1 in                      |
+|   Minneapolis | 30.4 in                      |
+| New York City | 44.7 in                      |
 
 html:
 <span style="font-family: cursive;"> fancy font</span>
