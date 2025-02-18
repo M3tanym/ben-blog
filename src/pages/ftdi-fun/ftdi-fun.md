@@ -17,7 +17,7 @@ the logic level and speeds you'll be interfacing at, and then package up the dat
 and then unpack it on the other end... it can quickly go from a 10-line quickie to an 
 overdeveloped microcontroller nightmare.
 
-<img alt="circuit" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*RUr7X3EfwshpJAd-" width="100%"/>
+<img alt="circuit" src="circuit.webp" width="100%;"/>
 
 _Photo by [Umberto](https://unsplash.com/@umby?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral)_
 
@@ -63,7 +63,7 @@ Both of the I2C lines must be pulled high (3.3V via a 2K resistor or similar),
 but the Arduino has internal pull-ups on its I2C bus, so we don't need to worry about that in this example. 
 It is also a good idea to run a grounding wire between the two devices as well.
 
-<img alt="FT2232H" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*-MrWbYgwoS-WDo192w53Hw.jpeg" width="100%"/>
+<img alt="FT2232H" src="FT2232H.png" width="100%;"/>
 
 _The FT2232H Mini Module_
 

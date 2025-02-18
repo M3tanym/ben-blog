@@ -5,8 +5,8 @@ import {CssBaseline} from '@mui/material';
 import {SnackbarProvider, useSnackbar} from 'notistack';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Home from './Home';
-import Editor from '../pages/editor';
-import Valentine from '../pages/valentine';
+import Editor from '../pages/editor/editor';
+import Valentine from '../pages/valentine/valentine';
 import PageLoader from './PageLoader';
 
 const App = () => {

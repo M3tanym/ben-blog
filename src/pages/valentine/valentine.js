@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Button from '@mui/material/Button';
-import './valentine/valentine.css'
-import Sheep from './valentine/sheep.svg';
+import './valentine.css'
+import Sheep from './sheep.svg';
 import {useTheme} from '@mui/styles';
 
 const Valentine = () => {

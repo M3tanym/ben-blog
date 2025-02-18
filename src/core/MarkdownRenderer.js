@@ -11,6 +11,7 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import {oneDark as darkCode, oneLight as lightCode} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import 'katex/dist/katex.min.css'
 import StyledLink from './StyledLink';
+import getPagePath from "./PagePath";
 
 const StyledCode = styled('code')(
     ({theme}) => `
@@ -122,16 +123,40 @@ const MarkdownRenderer = (props) => {
                             },
                             img({node, ...props}) {
                                 let title = node.properties.title;
-                                let param = null;
+                                let src = node.properties.src;
+                                let width = null;
+                                let height = null;
                                 let filter = '';
-                                if (title && title[0] === '!') {
-                                    const isSvg = node.properties.src.split('.').slice(-1)[0] === 'svg'
-                                    filter = (darkMode && isSvg) ? 'invert(100%)' : '';
-                                    param = title.substring(1) + ' !important';
+                                if (title?.startsWith('^')) {
+                                    // auto-invert images titled with ^
+                                    filter = darkMode ? 'invert(100%)' : '';
+                                    title = title.substring(1);
+                                }
+
+                                if (title?.startsWith('width=')) {
+                                    // width override
+                                    width = title.substring(6) + ' !important';
                                     title = null;
                                 }
-                                return <img alt={''} height={param} {...props} title={title}
-                                            style={{filter: filter}}/>
+
+                                if (title?.startsWith('height=')) {
+                                    // height override
+                                    height = title.substring(7) + ' !important';
+                                    title = null;
+                                }
+
+                                if (src[0] === '/' || !src.includes('/')) {
+                                    // auto-route local images
+                                    if (src[0] === '/') {
+                                        src = src.substring(1);
+                                    }
+                                    const [basePath, pageName] = getPagePath();
+                                    src = basePath + pageName + '/' + src;
+                                }
+
+                                return <img alt={''} width={width} height={height}
+                                            {...props} title={title}
+                                            src={src} style={{filter: filter}}/>
                             },
                             blockquote({...props}) {
                                 return <StyledBlockquote {...props} />

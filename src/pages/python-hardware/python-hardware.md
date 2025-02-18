@@ -27,7 +27,7 @@ If you've ever had to unplug and re-plug a device to make it work, or turn somet
 you know what I'm talking about. 
 This is usually a sign that the software messed up and the only path to recovery is a fresh start.
 
-<img alt="hardware" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*QDtH9lDLbRgmzQjx" width="100%"/>
+<img alt="hardware" src="hardware.webp" width="100%;"/>
 
 Photo by [Louis Reed](https://unsplash.com/@_louisreed?utm_source=medium&utm_medium=referral) on 
 [Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral)

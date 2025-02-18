@@ -53,20 +53,20 @@ divider:
 
 table:
 
-|          City | Average Annual Precipitation |
-|--------------:|:-----------------------------|
-|       Seattle | 39.3 in                      |
-|     San Diego | 10.2 in                      |
-|        Denver | 15.6 in                      |
-|        Dallas | 37.1 in                      |
-|   Minneapolis | 30.4 in                      |
-| New York City | 44.7 in                      |
+|        City | Average Annual Precipitation |
+|------------:|:-----------------------------|
+|     Seattle | 39.3 in                      |
+|   San Diego | 10.2 in                      |
+|      Denver | 15.6 in                      |
+|      Dallas | 37.1 in                      |
+| Minneapolis | 30.4 in                      |
+|      Boston | 47.1 in                      |
 
 html:
 <span style="font-family: cursive;"> fancy font</span>
 
 images:
 
-![mountains](https://www.svgrepo.com/show/272275/mountain-mountains.svg "!100px")
-<img alt="train" src="https://www.svgrepo.com/show/375916/train.svg" height="100px"/>
+![mountains](mountains.svg "^height=100px")
+<img alt="train" src="train.svg" height="100px"/>
 <img alt="city" src="https://www.svgrepo.com/show/286065/city-river.svg" width="100px"/>

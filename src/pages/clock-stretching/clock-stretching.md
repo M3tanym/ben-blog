@@ -7,7 +7,7 @@ describes how microcontrollers and other low-level hardware devices can communic
 Laptops, phones, and even smart [light bulbs](https://www.sparkfun.com/products/8579) use it to communicate internally. 
 It's sort of like the Ethernet of the microcontroller world.
 
-<img alt="hardware" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*3iLDTJoqoJzAAcYR" width="100%"/>
+<img alt="ethernet" src="ethernet.webp" width="100%;"/>
 
 _Kinda a bad metaphor, but we'll roll with it  (Photo by 
 [Jordan Harrison](https://unsplash.com/@jordanharrison?utm_source=medium&utm_medium=referral) on 
@@ -29,7 +29,8 @@ Then the responder replies with the requested data. Short and sweet!
 You can have more than 100 responder devices on a single bus. 
 ("bus" referring to the proto-network you create by dropping lots of devices on a circuit board.)
 
-<img alt="bus" src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*9ySsYpgmnTJF-WNw" width="100%"/>
+<img alt="bus" src="bus.webp" width="100%;"/>
+
 
 _Why do they call it a bus, anyway? Wouldn't a train make more sense? 
 (Photo by [CHUTTERSNAP](https://unsplash.com/@chuttersnap?utm_source=medium&utm_medium=referral) 

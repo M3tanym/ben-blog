@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Container, Typography} from '@mui/material';
 import {styled} from '@mui/system';
 import {TextareaAutosize} from '@mui/base';
-import MarkdownRenderer from '../core/MarkdownRenderer';
+import MarkdownRenderer from '../../core/MarkdownRenderer';
 
 const StyledTextarea = styled(TextareaAutosize)(
     ({theme}) => `

@@ -1,14 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
 import NotFound from './NotFound';
 import PageRenderer from './PageRenderer';
+import getPagePath from "./PagePath";
 
 const PageLoader = () => {
-    const pageName = useParams()['*'];
-    const basePath = window.location.host === 'blog.bengillett.com' ?
-        'https://raw.githubusercontent.com/M3tanym/ben-blog/refs/heads/main/src/pages/' :
-        window.location.protocol + '//' + window.location.hostname + ':8080/src/pages/';
-    const markdownPath = basePath + pageName + '.md';
+    const [basePath, pageName] = getPagePath();
+    const markdownPath = basePath + pageName + '/' + pageName + '.md';
     const [markdownContent, setMarkdownContent] = useState('');
     useEffect(() => {
         fetch(markdownPath)
