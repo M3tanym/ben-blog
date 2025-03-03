@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import {CssBaseline} from '@mui/material';
@@ -9,18 +9,29 @@ import Editor from '../pages/editor/editor';
 import Valentine from '../pages/valentine/valentine';
 import PageLoader from './PageLoader';
 
+const themeLight = createTheme({
+    palette: {
+        mode: 'light',
+        background: {
+            default: "#ffffff"
+        }
+    }
+});
+
+const themeDark = createTheme({
+    palette: {
+        mode: 'dark',
+        background: {
+            default: "#0d1116"
+        },
+        text: {
+            primary: "#f0f6fc"
+        }
+    }
+});
+
 const App = () => {
     const darkMode = !useMediaQuery('(prefers-color-scheme: light)');
-    const theme = useMemo(
-        () =>
-            createTheme({
-                palette: {
-                    mode: darkMode ? 'dark' : 'light',
-                },
-            }),
-        [darkMode],
-    );
-    const metaTheme = darkMode ? '#121212' : '#ffffff';
     const {enqueueSnackbar} = useSnackbar();
     const produceSnackBar = (message, variant = 'error') => enqueueSnackbar(message, {variant: variant});
     const OverrideRouter = () => {
@@ -40,8 +51,8 @@ const App = () => {
     }
     return (
         <>
-            <meta name='theme-color' content={metaTheme}/>
-            <ThemeProvider theme={theme}>
+            <meta name='theme-color' content={'background.default'}/>
+            <ThemeProvider theme={darkMode ? themeDark : themeLight}>
                 <CssBaseline/>
                 <SnackbarProvider maxSnack={3} preventDuplicate>
                     {OverrideRouter()}

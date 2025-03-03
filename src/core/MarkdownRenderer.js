@@ -15,7 +15,7 @@ import getPagePath from "./PagePath";
 
 const StyledCode = styled('code')(
     ({theme}) => `
-    &.styledCode {
+    &.styled-code {
         font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
         font-size: 85%;
         line-height: 120%;
@@ -24,9 +24,15 @@ const StyledCode = styled('code')(
         white-space: break-spaces;
         border-radius: 3px;
         display: inline-block;
-        color: ${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'};
-        background-color: ${theme.palette.mode === 'dark' ? '#282C34' : '#ECECEC'};
+        color: ${theme.palette.mode === 'dark' ? '#abb2bf' : '#1f2328'};
+        background-color: ${theme.palette.mode === 'dark' ? '#282C34' : '#f6f8fa'};
     }
+    
+    &.block {
+        padding: 1em 1em;
+        width: 100%;
+    }
+    
 `);
 
 const StyledSyntaxHighlighter = styled(SyntaxHighlighter)(
@@ -38,8 +44,8 @@ const StyledBlockquote = styled('blockquote')(
     ({theme}) => `
     margin: 0;
     padding: 0em 1em;
-    color: ${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'};
-    border-left: .28em solid ${theme.palette.mode === 'dark' ? '#282C34' : '#c7c7c7'};
+    color: ${theme.palette.mode === 'dark' ? '#9198a1' : '#59636e'};
+    border-left: .28em solid ${theme.palette.mode === 'dark' ? '#3d444d' : '#c7c7c7'};
 `);
 
 const StyledTable = styled('table')(
@@ -48,13 +54,13 @@ const StyledTable = styled('table')(
     color: ${theme.palette.mode === 'dark' ? '#ffffff' : '#000000'};
 
     & th, td {
-        border: 1px solid ${theme.palette.mode === 'dark' ? '#9d9d9d' : '#3a3a3a'};
-        padding: 4px;
+        border: 1px solid ${theme.palette.mode === 'dark' ? '#3d444d' : '#d1d9e0'};
+        padding: 6px 13px;
         text-align: left;
     }
     
-    & th {
-        background-color: ${theme.palette.mode === 'dark' ? '#282C34' : '#b6b6b6'};
+    & tr:nth-of-type(even) {
+        background-color: ${theme.palette.mode === 'dark' ? '#151b23' : '#f6f8fa'};
     }
     
     & tr:hover {
@@ -86,15 +92,17 @@ const StyledMarkdown = styled(Markdown)(
         max-width: 100% !important;
     }
     
-    & p, & li {
+    & p, & li, & table, & h1, & h2, & h3, & h4, & h5, & h6 {
         font-family: "Source Serif 4", Georgia, Cambria, "Times New Roman", Times, serif;
-        letter-spacing: -0.003em;
-        line-height: 32px;
-        font-size: 20px;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
     }
     
+    & p, & li {
+        letter-spacing: -0.003em;
+        line-height: 32px;
+        font-size: 16px;
+    }
 `);
 
 const MarkdownRenderer = (props) => {
@@ -106,8 +114,9 @@ const MarkdownRenderer = (props) => {
                         rehypePlugins={[rehypeKatex, rehypeRaw]}
                         components={{
                             code({node, inline, className, children, ...props}) {
-                                const match = /language-(\w+)/.exec(className || '')
-                                return !inline && match ? (
+                                const match = /language-(\w+)/.exec(className || '');
+                                const isBlock = node?.position?.start?.line !== node?.position?.end?.line;
+                                const highlighter = !inline && match ? (
                                     <StyledSyntaxHighlighter
                                         children={String(children).replace(/\n$/, '')}
                                         style={darkMode ? darkCode : lightCode}
@@ -116,10 +125,14 @@ const MarkdownRenderer = (props) => {
                                         {...props}
                                     />
                                 ) : (
-                                    <StyledCode className={((className || '') + ' styledCode')} {...props}>
+                                    <StyledCode className={((className || '') + ' styled-code' + (isBlock ? ' block' : ''))} {...props}>
                                         {children}
                                     </StyledCode>
-                                )
+                                );
+
+                                return (<>
+                                    {highlighter}
+                                </>);
                             },
                             img({node, ...props}) {
                                 let title = node.properties.title;
@@ -141,7 +154,7 @@ const MarkdownRenderer = (props) => {
 
                                 if (title?.startsWith('height=')) {
                                     // height override
-                                    height = title.substring(7) + ' !important';
+                                    height = title?.substring(7) + ' !important';
                                     title = null;
                                 }
 
