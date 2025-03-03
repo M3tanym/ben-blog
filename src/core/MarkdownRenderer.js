@@ -12,6 +12,8 @@ import {oneDark as darkCode, oneLight as lightCode} from 'react-syntax-highlight
 import 'katex/dist/katex.min.css'
 import StyledLink from './StyledLink';
 import getPagePath from "./PagePath";
+import {IconButton} from "@mui/material";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 const StyledCode = styled('code')(
     ({theme}) => `
@@ -29,10 +31,10 @@ const StyledCode = styled('code')(
     }
     
     &.block {
-        padding: 1em 1em;
+        padding: 1em;
+        margin: 0.5em 0px;
         width: 100%;
     }
-    
 `);
 
 const StyledSyntaxHighlighter = styled(SyntaxHighlighter)(
@@ -64,7 +66,7 @@ const StyledTable = styled('table')(
     }
     
     & tr:hover {
-        background-color: ${theme.palette.mode === 'dark' ? '#333333' : '#ECECEC'};
+        background-color: ${theme.palette.mode === 'dark' ? '#313234' : '#dee2ea'};
     }
 `);
 
@@ -103,6 +105,20 @@ const StyledMarkdown = styled(Markdown)(
         line-height: 32px;
         font-size: 16px;
     }
+    
+    .copy-icon {
+        position: absolute;
+        top: 0.35em;
+        right: 0.05em;
+        opacity: 0.6;    
+        &:hover {
+            opacity: 1;
+        }
+    }
+    
+    .syntax-highlighter-container {
+        position: relative;
+    }
 `);
 
 const MarkdownRenderer = (props) => {
@@ -130,9 +146,29 @@ const MarkdownRenderer = (props) => {
                                     </StyledCode>
                                 );
 
-                                return (<>
-                                    {highlighter}
-                                </>);
+                                const copyButton = (
+                                    <IconButton className={'copy-icon'} onClick={(e) => {
+                                        const elem = e.target.parentElement;
+                                        console.log(elem);
+                                        navigator.clipboard.writeText(String(children)).then(() => {
+                                            elem.classList.add('copied');
+                                            setTimeout(() => {
+                                                elem.classList.remove('copied');
+                                            }, 2000);
+                                        });
+                                    }}>
+                                        <ContentCopyIcon />
+                                    </IconButton>
+                                );
+
+                                return (
+                                    isBlock ? (
+                                    <div className={'syntax-highlighter-container'}>
+                                        {highlighter}
+                                        {copyButton}
+                                    </div>
+                                    ) : <>{highlighter}</>
+                                )
                             },
                             img({node, ...props}) {
                                 let title = node.properties.title;
