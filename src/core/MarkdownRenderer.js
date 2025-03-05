@@ -71,7 +71,7 @@ const StyledTable = styled('table')(
 `);
 
 const StyledMarkdown = styled(Markdown)(
-    () => `
+    ({theme}) => `
     .katex-display > .katex {
         max-width: 100% !important;
         white-space: normal !important;
@@ -102,8 +102,8 @@ const StyledMarkdown = styled(Markdown)(
     
     & p, & li {
         letter-spacing: -0.003em;
-        line-height: 32px;
-        font-size: 16px;
+        line-height: 24px;
+        font-size: 18px;
     }
     
     .copy-icon {
@@ -116,8 +116,18 @@ const StyledMarkdown = styled(Markdown)(
         }
     }
     
-    .syntax-highlighter-container {
+    .sy-container {
         position: relative;
+        width: 100%;
+        background-color: ${theme.palette.mode === 'dark' ? '#282C34' : '#f6f8fa'};
+    }
+    
+    .h-container {
+        width: 88%;
+    }
+    
+    .b-container {
+        width: 12%;
     }
 `);
 
@@ -138,10 +148,11 @@ const MarkdownRenderer = (props) => {
                                         style={darkMode ? darkCode : lightCode}
                                         language={match[1]}
                                         PreTag={'div'}
+                                        className={'highlighter-elem'}
                                         {...props}
                                     />
                                 ) : (
-                                    <StyledCode className={((className || '') + ' styled-code' + (isBlock ? ' block' : ''))} {...props}>
+                                    <StyledCode className={((className || '') + 'styled-code' + (isBlock ? ' block highlighter-elem' : ''))} {...props}>
                                         {children}
                                     </StyledCode>
                                 );
@@ -163,9 +174,9 @@ const MarkdownRenderer = (props) => {
 
                                 return (
                                     isBlock ? (
-                                    <div className={'syntax-highlighter-container'}>
-                                        {highlighter}
-                                        {copyButton}
+                                    <div className={'sy-container'}>
+                                        <div className={'h-container'}>{highlighter}</div>
+                                        <div className={'b-container'}>{copyButton}</div>
                                     </div>
                                     ) : <>{highlighter}</>
                                 )
