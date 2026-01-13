@@ -1,6 +1,6 @@
 # I2C and more with the FTDI FT2232H Mini Module and an Arduino
 
-_Jun 28, 2020_
+_Ben Gillett &bull; Jun 28, 2020_
 
 > _Interact with I2C, SPI, or bit-bang hardware using the FTDI FT2232H Mini module 
 > in Python and test it with an Arduino!_

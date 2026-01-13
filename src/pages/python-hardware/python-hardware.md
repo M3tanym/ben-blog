@@ -1,7 +1,7 @@
 # Python: How to write smart hardware wrappers
 ## And why context managers are your friends
 
-_Mar 26, 2021_
+_Ben Gillett &bull; March 26, 2021_
 
 In the [2020 StackOverflow Annual Developer Survey](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-wanted), 
 Python was the #1 most wanted programming language. 
@@ -29,8 +29,8 @@ This is usually a sign that the software messed up and the only path to recovery
 
 <img alt="hardware" src="hardware.webp" width="100%;"/>
 
-Photo by [Louis Reed](https://unsplash.com/@_louisreed?utm_source=medium&utm_medium=referral) on 
-[Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral)
+_Photo by [Louis Reed](https://unsplash.com/@_louisreed?utm_source=medium&utm_medium=referral) on 
+[Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral)_
 
 Luckily, many popular hardware components come with Python libraries that you can import and never worry 
 about the low-level interactions. But if you work with hardware long enough, you will inevitably 

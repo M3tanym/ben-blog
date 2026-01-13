@@ -27,7 +27,7 @@ const StyledCode = styled('code')(
         border-radius: 3px;
         display: inline-block;
         color: ${theme.palette.mode === 'dark' ? '#abb2bf' : '#1f2328'};
-        background-color: ${theme.palette.mode === 'dark' ? '#282C34' : '#f6f8fa'};
+        background-color: ${theme.palette.mode === 'dark' ? '#282c34' : '#f6f8fa'};
     }
     
     &.block {
@@ -100,10 +100,27 @@ const StyledMarkdown = styled(Markdown)(
         -webkit-font-smoothing: antialiased;
     }
     
+    & h1 {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 46px;
+        font-style: bold;
+        letter-spacing: -0.6px;
+        line-height: 52px;
+    }
+    
+    & h2 {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 300;
+        letter-spacing: -0.5px;
+        line-height: 40px;
+    }
+    
     & p, & li {
         letter-spacing: -0.003em;
-        line-height: 24px;
-        font-size: 18px;
+        line-height: 30px;
+        font-size: 20px;
     }
     
     .copy-icon {
@@ -119,7 +136,7 @@ const StyledMarkdown = styled(Markdown)(
     .sy-container {
         position: relative;
         width: 100%;
-        background-color: ${theme.palette.mode === 'dark' ? '#282C34' : '#f6f8fa'};
+        background-color: ${theme.palette.mode === 'dark' ? '#282c34' : '#f6f8fa'};
     }
     
     .h-container {

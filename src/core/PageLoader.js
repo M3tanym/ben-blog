@@ -19,7 +19,7 @@ const PageLoader = () => {
     const pageFound = markdownContent != null;
     return (
         <>
-            <title>{pageFound ? pageName.charAt(0).toUpperCase() + pageName.slice(1) : 'Not Found'}</title>
+            <title>{pageFound ? pageName + ' | Ben Gillett' : 'Not Found'}</title>
             {pageFound ?
                 <PageRenderer title={pageName} markdown={markdownContent}/> :
                 <NotFound title={pageName}/>}

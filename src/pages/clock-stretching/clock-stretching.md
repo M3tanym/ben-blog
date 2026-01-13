@@ -1,6 +1,6 @@
 # Learning I2C: What is Clock Stretching?
 
-_Aug 2, 2021_
+_Ben Gillett &bull; Aug 2, 2021_
 
 The Inter-Integrated Circuit bus protocol (more commonly known as I2C) is a popular and robust specification that 
 describes how microcontrollers and other low-level hardware devices can communicate with each other on a circuit board. 
@@ -9,7 +9,7 @@ It's sort of like the Ethernet of the microcontroller world.
 
 <img alt="ethernet" src="ethernet.webp" width="100%;"/>
 
-_Kinda a bad metaphor, but we'll roll with it  (Photo by 
+_Not the best metaphor, but we'll roll with it  (Photo by 
 [Jordan Harrison](https://unsplash.com/@jordanharrison?utm_source=medium&utm_medium=referral) on 
 [Unsplash](https://unsplash.com/?utm_source=medium&utm_medium=referral))_
 
@@ -30,7 +30,6 @@ You can have more than 100 responder devices on a single bus.
 ("bus" referring to the proto-network you create by dropping lots of devices on a circuit board.)
 
 <img alt="bus" src="bus.webp" width="100%;"/>
-
 
 _Why do they call it a bus, anyway? Wouldn't a train make more sense? 
 (Photo by [CHUTTERSNAP](https://unsplash.com/@chuttersnap?utm_source=medium&utm_medium=referral) 
