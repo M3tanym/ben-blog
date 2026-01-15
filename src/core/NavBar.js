@@ -11,12 +11,12 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import {MicrochipIcon} from './CustomIcons';
 
-const pages = ['Home', 'Random Page'];
+const pages = {'Home': '/',};
 // const settings = ['Profile', 'Logout'];
 
 function NavBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    // const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -29,6 +29,11 @@ function NavBar() {
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
+
+    const navigatePage = (page) => {
+        console.log(page);
+        window.location = pages[page];
+    }
 
     // const handleCloseUserMenu = () => {
     //     setAnchorElUser(null);
@@ -68,8 +73,8 @@ function NavBar() {
                                 // height: 200,
                             }}
                         >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                            {Object.keys(pages).map((page) => (
+                                <MenuItem key={page} onClick={() => { handleCloseNavMenu(); navigatePage(page); }}>
                                     <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
                                 </MenuItem>
                             ))}
@@ -93,10 +98,10 @@ function NavBar() {
                     >Ben's Blog</Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
+                        {Object.keys(pages).map((page) => (
                             <Button
                                 key={page}
-                                onClick={handleCloseNavMenu}
+                                onClick={() => { handleCloseNavMenu(); navigatePage(page); }}
                                 sx={{ my: 2,
                                     display: 'block',
                                     color: 'inherit',

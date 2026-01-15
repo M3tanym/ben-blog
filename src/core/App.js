@@ -8,7 +8,7 @@ import Home from './Home';
 import Editor from '../pages/editor/editor';
 import Valentine from '../pages/valentine/valentine';
 import PageLoader from './PageLoader';
-import {blue, green, grey} from "@mui/material/colors";
+import {grey} from "@mui/material/colors";
 
 const themeLight = createTheme({
     palette: {
@@ -24,7 +24,7 @@ const themeLight = createTheme({
         },
     }
 });
-// "#0d1116" #f0f6fc"
+
 const themeDark = createTheme({
     palette: {
         mode: 'dark',
@@ -34,12 +34,6 @@ const themeDark = createTheme({
         text: {
             primary: "#f0f6fc",
         },
-        primary: {
-            main: blue[300],
-        },
-        secondary: {
-            main: blue[300],
-        }
     }
 });
 
