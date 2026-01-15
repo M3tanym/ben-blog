@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container} from '@mui/material';
 import MarkdownRenderer from './MarkdownRenderer';
+import NavBar from './NavBar';
 import {styled} from "@mui/system";
 
 const StyledContainer = styled(Container)(
@@ -12,9 +13,7 @@ const StyledContainer = styled(Container)(
 const PageRenderer = (props) => {
     return (
         <StyledContainer maxWidth={'md'}>
-            <h4>This is a Blog Page</h4>
-            <div>...nav here...</div>
-            <br/>
+            <NavBar />
             <MarkdownRenderer markdown={props.markdown}/>
         </StyledContainer>
     );

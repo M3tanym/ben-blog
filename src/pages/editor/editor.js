@@ -13,10 +13,10 @@ const StyledTextarea = styled(TextareaAutosize)(
     line-height: 1;
     padding: 8px 12px;
     border-radius: 8px;
-    color: ${theme.palette.mode === 'dark' ? '#C7D0DD' : '#1C2025'};
-    background: ${theme.palette.mode === 'dark' ? '#1C2025' : '#ffffff'};
-    border: 1px solid ${theme.palette.mode === 'dark' ? '#434D5B' : '#DAE2ED'};
-    box-shadow: 0 2px 2px ${theme.palette.mode === 'dark' ? '#1C2025' : '#F3F6F9'};
+    color: ${theme.palette.mode === 'dark' ? '#c7d0dd' : '#1c2025'};
+    background: ${theme.palette.mode === 'dark' ? '#1c2025' : '#ffffff'};
+    border: 1px solid ${theme.palette.mode === 'dark' ? '#434d5b' : '#dae2ed'};
+    box-shadow: 0 2px 2px ${theme.palette.mode === 'dark' ? '#1c2025' : '#f3f6f9'};
 
     &:hover {
       border-color: #3399FF};
@@ -24,7 +24,7 @@ const StyledTextarea = styled(TextareaAutosize)(
 
     &:focus {
       border-color: #3399FF};
-      box-shadow: 0 0 0 3px ${theme.palette.mode === 'dark' ? '#6B7A90' : '#b6daff'};
+      box-shadow: 0 0 0 3px ${theme.palette.mode === 'dark' ? '#6b7a90' : '#b6daff'};
     }
 
     &:focus-visible {

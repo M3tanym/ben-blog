@@ -1,11 +1,15 @@
 # Transit in Dallas 🏙️
 
-The Dallas-Fort Worth Metroplex is the 4th largest [MSA](https://en.wikipedia.org/wiki/Metropolitan_Statistical_Area) in the United States.
-You think about Dallas being "big", but this ranking really puts it in perspective -- 
-it literally contains more than twice as many people than the Minneapolis-St. Paul Metropolitan Area (which feels large itself!)
+_Ben Gillett &bull; March 3, 2025_
 
-Dallas also contains one of the most car-centric infrastructures in the US. 
-The scale of the state and inter- state highway systems is staggering. 
+---------
+
+The Dallas-Fort Worth Metroplex is the 4th largest [Metropolitan Statistical Area](https://en.wikipedia.org/wiki/Metropolitan_Statistical_Area) in the United States.
+You think about Dallas being "big", but this ranking really puts it in perspective -- 
+it literally contains more than twice as many people as the Minneapolis-St. Paul Metropolitan Area (which feels large itself!)
+
+Dallas also has one of the most car-centric infrastructures in the US. 
+The scale of the state and inter-state highway systems is staggering. 
 Numerous over- and under-passes each consume as much area as a city neighborhood, yet serve only to funnel traffic on and off of the highway systems. At first glance this lack of urban density seems appalling, not least because of its aesthetic unappealing. However, the normal arguments for transit and urban density don't apply as well as you might expect. Of all areas in the US, Texas certainly has the most suitable landscape for car-centric infrastructure design. Its mostly flat, barren land is extremely well suited to interstate construction, and its temperate climate means roads last longer with less maintenance (compared to some areas, anyway...)
 
 In addition to highways, Dallas also has a somewhat extensive _(that's generous)_ light rail network. 

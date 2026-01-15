@@ -8,13 +8,20 @@ import Home from './Home';
 import Editor from '../pages/editor/editor';
 import Valentine from '../pages/valentine/valentine';
 import PageLoader from './PageLoader';
+import {grey} from "@mui/material/colors";
 
 const themeLight = createTheme({
     palette: {
         mode: 'light',
         background: {
-            default: "#ffffff"
-        }
+            default: "#ffffff",
+        },
+        text: {
+            primary: "#242424",
+        },
+        primary: {
+            main: grey[300],
+        },
     }
 });
 
@@ -22,11 +29,11 @@ const themeDark = createTheme({
     palette: {
         mode: 'dark',
         background: {
-            default: "#0d1116"
+            default: "#0d1116",
         },
         text: {
-            primary: "#f0f6fc"
-        }
+            primary: "#f0f6fc",
+        },
     }
 });
 
