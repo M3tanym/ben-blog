@@ -3,12 +3,14 @@
 
 _Ben Gillett &bull; March 26, 2021_
 
+---------
+
 In the [2020 StackOverflow Annual Developer Survey](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-wanted), 
 Python was the #1 most wanted programming language. 
 It's easy to see why: Python is easy to learn, easier to read, and it allows programmers to articulate complex 
 instructions with very simple syntax. 
 Python is used all over the place: web development, machine learning, data science, even on embedded systems. 
-(Check out [MicroPython](http://micropython.org/!) Python can also be used to interact with hardware devices. 
+(Check out [MicroPython](http://micropython.org/)!) Python can also be used to interact with hardware devices. 
 With the increasing popularity of single-board computers with IO pins exposed (like the Raspberry Pi), 
 low-level development has never been more accessible to entry-level coders.
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {styled} from '@mui/system';
-import {useTheme} from '@mui/styles';
+import {useTheme} from '@mui/material/styles'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
@@ -105,16 +105,16 @@ const StyledMarkdown = styled(Markdown)(
         font-size: 46px;
         font-style: bold;
         letter-spacing: -0.6px;
-        line-height: 52px;
+        line-height: 50px;
     }
     
     & h2 {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 26px;
+        font-size: 32px;
         font-style: normal;
         font-weight: 300;
         letter-spacing: -0.5px;
-        line-height: 40px;
+        line-height: 38px;
     }
     
     & p, & li {
