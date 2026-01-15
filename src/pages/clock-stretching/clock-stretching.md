@@ -2,6 +2,8 @@
 
 _Ben Gillett &bull; Aug 2, 2021_
 
+---------
+
 The Inter-Integrated Circuit bus protocol (more commonly known as I2C) is a popular and robust specification that 
 describes how microcontrollers and other low-level hardware devices can communicate with each other on a circuit board. 
 Laptops, phones, and even smart [light bulbs](https://www.sparkfun.com/products/8579) use it to communicate internally. 

@@ -2,6 +2,8 @@
 
 _Ben Gillett &bull; Jun 28, 2020_
 
+---------
+
 > _Interact with I2C, SPI, or bit-bang hardware using the FTDI FT2232H Mini module 
 > in Python and test it with an Arduino!_
 

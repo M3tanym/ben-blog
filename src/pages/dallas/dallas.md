@@ -2,6 +2,8 @@
 
 _Ben Gillett &bull; March 3, 2025_
 
+---------
+
 The Dallas-Fort Worth Metroplex is the 4th largest [Metropolitan Statistical Area](https://en.wikipedia.org/wiki/Metropolitan_Statistical_Area) in the United States.
 You think about Dallas being "big", but this ranking really puts it in perspective -- 
 it literally contains more than twice as many people as the Minneapolis-St. Paul Metropolitan Area (which feels large itself!)
