@@ -183,7 +183,6 @@ const MarkdownRenderer = (props) => {
                                 const copyButton = (
                                     <IconButton className={'copy-icon'} onClick={(e) => {
                                         const elem = e.target.parentElement;
-                                        console.log(elem);
                                         navigator.clipboard.writeText(String(children)).then(() => {
                                             elem.classList.add('copied');
                                             setTimeout(() => {

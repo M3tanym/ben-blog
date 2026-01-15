@@ -1,4 +1,4 @@
-# I2C and more with the FTDI FT2232H Mini Module and an Arduino
+# I2C and More with the FTDI FT2232H Mini Module
 
 _Ben Gillett &bull; Jun 28, 2020_
 
@@ -332,8 +332,6 @@ Cool! We sent a byte (0x42, in this case) via I2C to our "mystery hardware devic
 and it sent back the same byte in parallel, using 8 digital pins.
 This illustrates the usefulness and (relative) simplicity of using a FTDI device to interface with 
 your low-level hardware instead of programming a microcontroller to do it for you.
-
------
 
 Hopefully you found this helpful! 
 Integrating hardware with higher-level systems in languages like Python can get complicated and tedious in a hurry. 

@@ -1,4 +1,4 @@
-# Python: How to write smart hardware wrappers
+# Python: How to Write Smart Hardware Wrappers
 ## And why context managers are your friends
 
 _Ben Gillett &bull; March 26, 2021_

@@ -55,18 +55,13 @@ Some devices that use I2C don't even implement the whole protocol! (some FPGAs, 
 Supporting clock stretching necessitates a lot of extra logic for the controller device. 
 The previously simple heartbeat signal is now complicated by a constant need to check the line and make 
 sure the responder isn't holding it down and asking for more time. 
-(Hardware folks will know that setting up a line for output and input can be very difficult.) 
+(Hardware folks will know that setting up a line for both output and input can be difficult.) 
 And that's not all: some controller devices have bugs in their clock-stretching implementation! 
 A very notable example of this is the BCM2835 [SoC](https://en.wikipedia.org/wiki/System_on_a_chip)
 used on many Raspberry Pi models. 
 The SoC sometimes misses requests to stretch the clock, rendering it nearly impossible to use that 
 part of the I2C spec with this device. (It's interesting reading: 
 [BCM2835 Datasheet Errata](https://elinux.org/BCM2835_datasheet_errata#p35_I2C_clock_stretching))
-
-Clock Stretching is a great idea in premise. 
-But sometimes, as in other tech domains, the added complexity outweighs the benefits. 
-That's one reason it's relatively rare to see this feature used in the wild: 
-often, design changes can eliminate the need to hold down the clock, or you can live with a lower bus bitrate.
 
 Despite its relative simplicity (well, "simple" compared to some other hardware protocols...) 
 I2C can get murky quickly. But I hope this summary leaves you with a better understanding of I2C 

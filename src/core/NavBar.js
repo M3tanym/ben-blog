@@ -31,7 +31,6 @@ function NavBar() {
     };
 
     const navigatePage = (page) => {
-        console.log(page);
         window.location = pages[page];
     }
 

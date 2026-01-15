@@ -17,9 +17,11 @@ const PageLoader = () => {
             }).then(text => setMarkdownContent(text));
     }, [markdownPath]);
     const pageFound = markdownContent != null;
+    let pageTitle = pageName.match(/\d\d-\d\d-\d\d-.+/) ? pageName.substring(9) : pageName
+    pageTitle = pageTitle.replace('-', ' ')
     return (
         <>
-            <title>{pageFound ? pageName.substring(8) + ' | Ben Gillett' : 'Not Found'}</title>
+            <title>{pageFound ? pageTitle + ' | Ben Gillett' : 'Not Found'}</title>
             {pageFound ?
                 <PageRenderer title={pageName} markdown={markdownContent}/> :
                 <NotFound title={pageName}/>}

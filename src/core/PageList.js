@@ -11,27 +11,26 @@ const PageList = () => {
                 }
                 return response.json();
             }).then(json => {
-                console.log(json);
             const reduced = json.tree.reduce((result, page) => {
                 if (page.type === 'blob') {
-                    if (page.path.startsWith('src/pages/') && page.path.endsWith('.md')) {
-                        const name = page.path.split('.')[0].split('/').at(-2);
-                        result.push(name);
+                    if (page.path.startsWith('src/pages/') && page.path.endsWith('.md') && page.path.match(/\d\d-\d\d-\d\d-.+/) ) {
+                        const path = page.path.split('.')[0].split('/').at(-2);
+                        const date = path.substring(0, 8);
+                        const name = path.substring(9).replace('-', ' ');
+                        result.push({'path': path, 'name': name, 'date': date});
                     }
                 }
                 return result;
             }, []);
-            console.log(reduced);
             setPages(reduced);
         });
     }, []);
 
     return (
         <>
-            <p>pages:</p>
-            <ul>
+            <ul style={{listStyleType: 'none'}}>
                 {pages.map(page => {
-                    return <li key={page}><StyledLink href={'/' + page}>{page}</StyledLink></li>
+                    return <li key={page.path}><StyledLink href={'/' + page.path}>{page.date}: {page.name}</StyledLink></li>
                 })}
             </ul>
         </>
