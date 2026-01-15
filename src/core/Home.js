@@ -1,20 +1,22 @@
 import React from 'react';
-import {Container, Typography} from '@mui/material';
+import {Container} from '@mui/material';
 import PageList from './PageList';
+import NavBar from "./NavBar";
+import {styled} from "@mui/system";
+
+const StyledContainer = styled(Container)(
+    () => `
+    overflow-x: hidden;
+    max-width: 100%;
+`);
 
 const Home = () => {
     return (
-        <Container>
+        <StyledContainer maxWidth={'md'}>
             <title>Ben's Blog</title>
-            <br/>
-            <Typography variant={'h4'}>
-                Blog Home
-            </Typography>
-            <Typography variant={'h6'}>
-                <p><em>🏗 under construction. check back in a few days (or months)</em> 🤓</p>
-            </Typography>
+            <NavBar />
             <PageList/>
-        </Container>
+        </StyledContainer>
     );
 };
 

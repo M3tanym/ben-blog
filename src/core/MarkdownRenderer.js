@@ -123,6 +123,12 @@ const StyledMarkdown = styled(Markdown)(
         font-size: 20px;
     }
     
+    & img {
+        max-width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    
     .copy-icon {
         position: absolute;
         top: 0.35em;

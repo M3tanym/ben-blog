@@ -11,19 +11,17 @@ const PageList = () => {
                 }
                 return response.json();
             }).then(json => {
+                console.log(json);
             const reduced = json.tree.reduce((result, page) => {
                 if (page.type === 'blob') {
-                    const base = page.path.substring(0, 10);
-                    if (base === 'src/pages/') {
-                        const path = page.path.substring(10);
-                        if (!path.includes('/')) {
-                            const name = path.split('.')[0];
-                            result.push(name);
-                        }
+                    if (page.path.startsWith('src/pages/') && page.path.endsWith('.md')) {
+                        const name = page.path.split('.')[0].split('/').at(-2);
+                        result.push(name);
                     }
                 }
                 return result;
             }, []);
+            console.log(reduced);
             setPages(reduced);
         });
     }, []);
