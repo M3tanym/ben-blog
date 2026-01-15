@@ -5,7 +5,7 @@ import getPagePath from "./PagePath";
 
 const PageLoader = () => {
     const [basePath, pageName] = getPagePath();
-    const markdownPath = basePath + pageName + '/' + pageName + '.md';
+    const markdownPath = basePath + pageName + '/index.md';
     const [markdownContent, setMarkdownContent] = useState('');
     useEffect(() => {
         fetch(markdownPath)
@@ -19,7 +19,7 @@ const PageLoader = () => {
     const pageFound = markdownContent != null;
     return (
         <>
-            <title>{pageFound ? pageName + ' | Ben Gillett' : 'Not Found'}</title>
+            <title>{pageFound ? pageName.substring(8) + ' | Ben Gillett' : 'Not Found'}</title>
             {pageFound ?
                 <PageRenderer title={pageName} markdown={markdownContent}/> :
                 <NotFound title={pageName}/>}
