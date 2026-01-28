@@ -56,17 +56,19 @@ const PageList = () => {
                 }
                 return response.json();
             }).then(json => {
-            const reduced = json.tree.reduce((result, page) => {
+            let reduced = json.tree.reduce((result, page) => {
                 if (page.type === 'blob') {
-                    if (page.path.startsWith('src/pages/') && page.path.endsWith('.md') && page.path.match(/\d\d-\d\d-\d\d-.+/) ) {
+                    if (page.path.match(/^src\/pages\/\d\d-\d\d-\d\d-.+\.md/)) {
                         const path = page.path.split('.')[0].split('/').at(-2);
-                        const date = path.substring(0, 8);
-                        const name = path.substring(9).replace('-', ' ');
+                        const ds = path.substring(0, 8);
+                        const date = new Date(Number('20' + ds.substring(6, 8)), Number(ds.substring(0, 2)) - 1, Number(ds.substring(3, 5)));
+                        const name = path.substring(9).replaceAll('-', ' ');
                         result.push({'path': path, 'name': name, 'date': date});
                     }
                 }
                 return result;
             }, []);
+            reduced = reduced.sort((a, b) => b.date - a.date);
             setPages(reduced);
         });
     }, []);
@@ -79,7 +81,7 @@ const PageList = () => {
                     return (
                     <li key={page.path} className={'page-item'}>
                         <span className={'page-name'}><StyledLink href={'/' + page.path}>{page.name}</StyledLink></span>
-                        <span className={'page-date'}>{page.date}</span>
+                        <span className={'page-date'}>{page.date.toISOString().slice(0, 10)}</span>
                     </li>);
                 })}
             </ul>
