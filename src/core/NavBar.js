@@ -10,8 +10,9 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import {MicrochipIcon} from './CustomIcons';
+import {Link} from "@mui/material";
 
-const pages = {'Home': '/',};
+const pages = {'Comments': '/comments', 'Main Site': 'https://bengillett.com'};
 // const settings = ['Profile', 'Logout'];
 
 function NavBar() {
@@ -80,7 +81,7 @@ function NavBar() {
                         </Menu>
                     </Box>
 
-                    <MicrochipIcon sx={{ display: 'flex', mr: 1 }} />
+                    <MicrochipIcon sx={{display: 'flex', mr: 1}} />
 
                     <Typography
                         variant="h6"
@@ -94,6 +95,8 @@ function NavBar() {
                             color: 'inherit',
                             textDecoration: 'none',
                         }}
+                        component={Link}
+                        href="/"
                     >Ben's Blog</Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

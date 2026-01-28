@@ -1,5 +1,50 @@
 import React, {useEffect, useState} from 'react';
 import StyledLink from './StyledLink';
+import {Typography} from "@mui/material";
+import {styled} from "@mui/system";
+import Box from "@mui/material/Box";
+
+const StyledBox = styled(Box)(
+    () => `
+    .table-of-contents {
+        margin-top: 0.6em;
+        margin-bottom: 0.4em;
+        text-align: center;
+    }
+    
+    .page-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.6em;
+    }
+    
+    .page-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .page-name:after {
+        content: " .........................................................................................................................................................................................................................................................................................";
+    }
+    
+    .page-date {
+        flex-shrink: 0;
+    }
+    
+    & p, & li, & span, & table, & h1, & h2, & h3, & h4, & h5, & h6 {
+        font-family: "Source Serif 4", Georgia, Cambria, "Times New Roman", Times, serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    & ul {
+        list-style-type: none;
+        padding-inline-start: 0px;
+        margin: 0;
+        text-decoration-skip-ink: none;
+    }
+`);
 
 const PageList = () => {
     const [pages, setPages] = useState([]);
@@ -27,13 +72,18 @@ const PageList = () => {
     }, []);
 
     return (
-        <>
-            <ul style={{listStyleType: 'none'}}>
+        <StyledBox>
+            <Typography component="h4" variant="h4" className={'table-of-contents'}>Table of Contents</Typography>
+            <ul>
                 {pages.map(page => {
-                    return <li key={page.path}><StyledLink href={'/' + page.path}>{page.date}: {page.name}</StyledLink></li>
+                    return (
+                    <li key={page.path} className={'page-item'}>
+                        <span className={'page-name'}><StyledLink href={'/' + page.path}>{page.name}</StyledLink></span>
+                        <span className={'page-date'}>{page.date}</span>
+                    </li>);
                 })}
             </ul>
-        </>
+        </StyledBox>
     );
 };
 
