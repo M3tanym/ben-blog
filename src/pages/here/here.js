@@ -22,10 +22,31 @@ const Here = () => {
 
         socket.current.onclose = () => { };
 
+        const handleFocus = () => {
+            if (!socket.current || socket.current.readyState === WebSocket.CLOSED) {
+                socket.current = new WebSocket("wss://ws.blog.bengillett.com");
+            }
+        }
+
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === 'visible') {
+                if (!socket.current || socket.current.readyState === WebSocket.CLOSED) {
+                    socket.current = new WebSocket("wss://ws.blog.bengillett.com");
+                }
+            }
+        }
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        window.addEventListener('focus', handleFocus);
+
         return () => {
             socket.current.close();
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            window.removeEventListener('focus', handleFocus)
         };
     }, []);
+
+
 
     const queryHereCount = () => {
         if (socket.current && socket.current.readyState === WebSocket.OPEN) {
@@ -35,6 +56,7 @@ const Here = () => {
 
     const incrementHereCount = () => {
         socket.current.send(JSON.stringify({"type": "here", "increment": true}));
+        setHereCount(hereCount + 1);
     };
 
     return (
