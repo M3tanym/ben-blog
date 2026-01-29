@@ -9,6 +9,7 @@ import Editor from '../pages/editor/editor';
 import Valentine from '../pages/valentine/valentine';
 import PageLoader from './PageLoader';
 import {grey} from "@mui/material/colors";
+import Here from "../pages/here/here";
 
 const themeLight = createTheme({
     palette: {
@@ -52,6 +53,7 @@ const App = () => {
                     <Route path='*' element={<PageLoader/>}/>
                     <Route path='editor' element={<Editor/>}/>
                     <Route path='valentine' element={<Valentine/>}/>
+                    <Route path='here' element={<Here/>}/>
                 </Routes>
             </BrowserRouter>
         );

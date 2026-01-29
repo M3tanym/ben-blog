@@ -12,7 +12,11 @@ import MenuItem from '@mui/material/MenuItem';
 import {MicrochipIcon} from './CustomIcons';
 import {Link} from "@mui/material";
 
-const pages = {'Comments': '/comments', 'Main Site': 'https://bengillett.com'};
+const pages = {
+    '🏡': 'https://bengillett.com',
+    '💬': '/comments',
+    '📍': '/here',
+};
 // const settings = ['Profile', 'Logout'];
 
 function NavBar() {
