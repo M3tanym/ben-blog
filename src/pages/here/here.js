@@ -10,11 +10,10 @@ const Here = () => {
 
     useEffect(() => {
         const connect = () => {
-            console.log("trying to connect");
             socket.current = new WebSocket("wss://ws.blog.bengillett.com");
-            socket.current.onopen = () => { console.log("connected"); queryHereCount() };
-            socket.current.onclose = () => {console.log("closed"); };
-            socket.current.onerror = (e) => { console.log("error", e); };
+            socket.current.onopen = () => { queryHereCount() };
+            socket.current.onclose = () => { };
+            socket.current.onerror = () => { };
             socket.current.onmessage = (event) => {
                 const message = JSON.parse(event.data);
                 if (message.type === "here") {
@@ -25,14 +24,12 @@ const Here = () => {
         }
 
         const handleFocus = () => {
-            console.log("focus");
             if (!socket.current || socket.current.readyState === WebSocket.CLOSED) {
                 connect();
             }
         }
 
         const handleVisibilityChange = () => {
-            console.log("visible");
             if (document.visibilityState === 'visible') {
                 handleFocus();
             }
@@ -41,7 +38,6 @@ const Here = () => {
         document.addEventListener('visibilitychange', handleVisibilityChange);
         window.addEventListener('focus', handleFocus);
         window.addEventListener('online', handleFocus);
-
 
         connect();
 
