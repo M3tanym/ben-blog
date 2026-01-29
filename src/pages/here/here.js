@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Container, Typography} from "@mui/material";
 import NavBar from "../../core/NavBar";
 import Button from "@mui/material/Button";
+import NumberFlow from '@number-flow/react'
 
 const Here = () => {
     const [hereCount, setHereCount] = useState([]);
@@ -17,9 +18,7 @@ const Here = () => {
             }
         };
 
-        socket.current.onopen = () => {
-            queryHereCount();
-        };
+        socket.current.onopen = () => { queryHereCount() };
 
         socket.current.onclose = () => { };
 
@@ -44,7 +43,7 @@ const Here = () => {
             <NavBar />
             <br />
             <Typography variant="h4" component="h4">You are here 📍</Typography>
-            <Typography variant="h5" component="h5">People who were also here: {hereCount}</Typography>
+            <Typography variant="h5" component="h5">People who were also here: <NumberFlow value={hereCount} /></Typography>
             <br />
             <Button onClick={incrementHereCount}>I am here</Button>
         </Container>
