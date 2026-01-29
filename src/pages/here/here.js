@@ -67,7 +67,8 @@ const Here = () => {
             <NavBar />
             <br />
             <Typography variant="h4" component="h4">You are here 📍</Typography>
-            <Typography variant="h5" component="h5">People who were also here: <NumberFlow value={hereCount} /></Typography>
+            <br />
+            <Typography variant="h6" component="h6">people who were also here: <NumberFlow format={{ minimumIntegerDigits: 4, useGrouping: false }} value={hereCount} /></Typography>
             <br />
             <Button onClick={incrementHereCount}>I am here</Button>
         </Container>
