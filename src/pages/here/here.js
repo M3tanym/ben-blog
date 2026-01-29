@@ -9,43 +9,49 @@ const Here = () => {
     const socket = useRef(null);
 
     useEffect(() => {
-        socket.current = new WebSocket("wss://ws.blog.bengillett.com");
-        socket.current.onmessage = (event) => {
-            const message = JSON.parse(event.data);
-            if (message.type === "here") {
-                const count = message.count;
-                setHereCount(count);
-            }
-        };
-
-        socket.current.onopen = () => { queryHereCount() };
-
-        socket.current.onclose = () => { };
+        const connect = () => {
+            console.log("trying to connect");
+            socket.current = new WebSocket("wss://ws.blog.bengillett.com");
+            socket.current.onopen = () => { console.log("connected"); queryHereCount() };
+            socket.current.onclose = () => {console.log("closed"); };
+            socket.current.onerror = (e) => { console.log("error", e); };
+            socket.current.onmessage = (event) => {
+                const message = JSON.parse(event.data);
+                if (message.type === "here") {
+                    const count = message.count;
+                    setHereCount(count);
+                }
+            };
+        }
 
         const handleFocus = () => {
+            console.log("focus");
             if (!socket.current || socket.current.readyState === WebSocket.CLOSED) {
-                socket.current = new WebSocket("wss://ws.blog.bengillett.com");
+                connect();
             }
         }
 
         const handleVisibilityChange = () => {
+            console.log("visible");
             if (document.visibilityState === 'visible') {
-                if (!socket.current || socket.current.readyState === WebSocket.CLOSED) {
-                    socket.current = new WebSocket("wss://ws.blog.bengillett.com");
-                }
+                handleFocus();
             }
         }
 
         document.addEventListener('visibilitychange', handleVisibilityChange);
         window.addEventListener('focus', handleFocus);
+        window.addEventListener('online', handleFocus);
+
+
+        connect();
 
         return () => {
             socket.current.close();
             document.removeEventListener('visibilitychange', handleVisibilityChange);
-            window.removeEventListener('focus', handleFocus)
+            window.removeEventListener('focus', handleFocus);
+            window.removeEventListener('online', handleFocus);
         };
     }, []);
-
 
 
     const queryHereCount = () => {
