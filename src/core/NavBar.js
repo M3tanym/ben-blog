@@ -10,14 +10,14 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import {MicrochipIcon} from './CustomIcons';
-import {Link} from "@mui/material";
+import {Link, Tooltip} from "@mui/material";
 
-const pages = {
-    '🏡': '/',
-    '👤': 'https://bengillett.com',
-    '💬': '/comments',
-    '📍': '/here',
-};
+const pages = [
+    {'tooltip': 'Home', 'url': '/', 'icon': '🏡'},
+    {'tooltip': 'Main Site', 'url': 'https://bengillett.com', 'icon': '👤',},
+    {'tooltip': 'Comments', 'url': '/comments', 'icon': '💬',},
+    {'tooltip': 'You Are Here', 'url': '/here', 'icon': '📍', },
+];
 
 function NavBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -30,8 +30,8 @@ function NavBar() {
         setAnchorElNav(null);
     };
 
-    const navigatePage = (page) => {
-        window.location = pages[page];
+    const navigatePage = (url) => {
+        window.location = url;
     }
 
     return (
@@ -68,10 +68,18 @@ function NavBar() {
                                 // height: 200,
                             }}
                         >
-                            {Object.keys(pages).map((page) => (
-                                <MenuItem key={page} onClick={() => { handleCloseNavMenu(); navigatePage(page); }}>
-                                    <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
-                                </MenuItem>
+                            {pages.map((page) => (
+                                <Tooltip title={page.tooltip}>
+                                    <MenuItem
+                                        key={page.name}
+                                        onClick={() => {
+                                            handleCloseNavMenu();
+                                            navigatePage(page.url);
+                                        }}
+                                    >
+                                        <Typography sx={{ textAlign: 'center' }}>{page.icon}</Typography>
+                                    </MenuItem>
+                                </Tooltip>
                             ))}
                         </Menu>
                     </Box>
@@ -95,17 +103,23 @@ function NavBar() {
                     >Ben's Blog</Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {Object.keys(pages).map((page) => (
-                            <Button
-                                key={page}
-                                onClick={() => { handleCloseNavMenu(); navigatePage(page); }}
-                                sx={{ my: 2,
-                                    display: 'block',
-                                    color: 'inherit',
-                                }}
-                            >
-                                {page}
-                            </Button>
+                        {pages.map((page) => (
+                            <Tooltip title={page.tooltip}>
+                                <Button
+                                    key={page.name}
+                                    onClick={() => {
+                                        handleCloseNavMenu();
+                                        navigatePage(page.url);
+                                    }}
+                                    sx={{
+                                        my: 2,
+                                        display: 'block',
+                                        color: 'inherit',
+                                    }}
+                                >
+                                    {page.icon}
+                                </Button>
+                            </Tooltip>
                         ))}
                     </Box>
                 </Toolbar>
