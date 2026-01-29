@@ -69,9 +69,8 @@ function NavBar() {
                             }}
                         >
                             {pages.map((page) => (
-                                <Tooltip title={page.tooltip}>
+                                <Tooltip title={page.tooltip} key={page.tooltip}>
                                     <MenuItem
-                                        key={page.name}
                                         onClick={() => {
                                             handleCloseNavMenu();
                                             navigatePage(page.url);
@@ -104,9 +103,8 @@ function NavBar() {
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Tooltip title={page.tooltip}>
+                            <Tooltip title={page.tooltip} key={page.tooltip}>
                                 <Button
-                                    key={page.name}
                                     onClick={() => {
                                         handleCloseNavMenu();
                                         navigatePage(page.url);

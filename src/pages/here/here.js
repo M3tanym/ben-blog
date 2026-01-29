@@ -3,10 +3,30 @@ import {Container, Typography} from "@mui/material";
 import NavBar from "../../core/NavBar";
 import Button from "@mui/material/Button";
 import NumberFlow from '@number-flow/react'
+import {styled} from "@mui/system";
+import {grey} from "@mui/material/colors";
 
 const Here = () => {
-    const [hereCount, setHereCount] = useState([]);
+    const [hereCount, setHereCount] = useState(null);
+    const [tempCount, setTempCount] = useState(0);
     const socket = useRef(null);
+
+    const StyledButton = styled(Button)(
+        ({theme}) => `
+            color: ${theme.palette.mode === 'dark' ? 'white' : 'black'};
+            background-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
+    `);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (hereCount) {
+                clearInterval(interval);
+                return;
+            }
+            setTempCount(tempCount => tempCount + 1);
+        }, 100);
+        return () => clearInterval(interval);
+    }, [hereCount]);
 
     useEffect(() => {
         const connect = () => {
@@ -66,11 +86,10 @@ const Here = () => {
             <title>You are here 📍</title>
             <NavBar />
             <br />
-            <Typography variant="h4" component="h4">You are here 📍</Typography>
             <br />
-            <Typography variant="h6" component="h6">people who were also here: <NumberFlow format={{ minimumIntegerDigits: 4, useGrouping: false }} value={hereCount} /></Typography>
+            <Typography variant="h6" component="h6">You are here. People who were also here: <NumberFlow format={{ minimumIntegerDigits: 5, useGrouping: false }} value={hereCount ?? tempCount} /></Typography>
             <br />
-            <Button onClick={incrementHereCount}>I am here</Button>
+            <StyledButton onClick={incrementHereCount}>I am here</StyledButton>
         </Container>
     );
 };
