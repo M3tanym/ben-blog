@@ -13,23 +13,18 @@ import {MicrochipIcon} from './CustomIcons';
 import {Link} from "@mui/material";
 
 const pages = {
-    '🏡': 'https://bengillett.com',
+    '🏡': '/',
+    '👤': 'https://bengillett.com',
     '💬': '/comments',
     '📍': '/here',
 };
-// const settings = ['Profile', 'Logout'];
 
 function NavBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-    // const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
-
-    // const handleOpenUserMenu = (event) => {
-    //     setAnchorElUser(event.currentTarget);
-    // };
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
@@ -38,10 +33,6 @@ function NavBar() {
     const navigatePage = (page) => {
         window.location = pages[page];
     }
-
-    // const handleCloseUserMenu = () => {
-    //     setAnchorElUser(null);
-    // };
 
     return (
         <AppBar position="static">
