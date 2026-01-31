@@ -83,11 +83,11 @@ const Here = () => {
 
     return (
         <Container maxWidth={'md'}>
-            <title>You are here 📍</title>
+            <title>You are Here 📍</title>
             <NavBar/>
             <br/>
             <br/>
-            <Typography variant="h6" component="h6">You are here. People who were also here: <NumberFlow format={{ minimumIntegerDigits: 5, useGrouping: false }} value={hereCount ?? tempCount}/></Typography>
+            <Typography variant="h6" component="h6">You are Here 📍 People who were also here: <NumberFlow format={{ minimumIntegerDigits: 5, useGrouping: false }} value={hereCount ?? tempCount}/>.</Typography>
             <br/>
             <StyledButton onClick={incrementHereCount}>I am here</StyledButton>
         </Container>

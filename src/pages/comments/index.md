@@ -7,4 +7,4 @@ and send a message like:
 
 `{'type': 'comment', 'text': '<your comment>'}`
 
-_or message me on LinkedIn_ 📫
+or message me on LinkedIn 📫

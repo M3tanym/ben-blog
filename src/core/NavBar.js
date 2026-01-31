@@ -5,18 +5,22 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import {MicrochipIcon} from './CustomIcons';
 import {Link, Tooltip} from "@mui/material";
+import {MicrochipIcon} from './CustomIcons';
+import MenuIcon from '@mui/icons-material/Menu';
+import TocIcon from '@mui/icons-material/Toc';
+import HomeIcon from '@mui/icons-material/Home';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import PlaceIcon from '@mui/icons-material/Place';
 
 const pages = [
-    {'tooltip': 'Table of Contents', 'url': '/', 'icon': '📖'},
-    {'tooltip': 'Main Site', 'url': 'https://bengillett.com', 'icon': '👤',},
-    {'tooltip': 'Comments', 'url': '/comments', 'icon': '💬',},
-    {'tooltip': 'You Are Here', 'url': '/here', 'icon': '📍', },
+    {'tooltip': 'Table of Contents', 'url': '/', 'icon': 'toc'},
+    {'tooltip': 'Main Site', 'url': 'https://bengillett.com', 'icon': 'home'},
+    {'tooltip': 'Comments', 'url': '/comments', 'icon': 'comment'},
+    {'tooltip': 'You are Here', 'url': '/here', 'icon': 'place'},
 ];
 
 function NavBar() {
@@ -32,7 +36,22 @@ function NavBar() {
 
     const navigatePage = (url) => {
         window.location = url;
-    }
+    };
+
+    const pickIcon = (icon) => {
+        switch (icon) {
+            case 'toc':
+                return <TocIcon />;
+            case 'home':
+                return <HomeIcon />;
+            case 'comment':
+                return <ChatBubbleIcon />;
+            case 'place':
+                return <PlaceIcon />;
+            default:
+            return <MenuIcon />;
+        }
+    };
 
     return (
         <AppBar position="static">
@@ -76,14 +95,14 @@ function NavBar() {
                                             navigatePage(page.url);
                                         }}
                                     >
-                                        <Typography sx={{ textAlign: 'center' }}>{page.icon}</Typography>
+                                        <Typography sx={{ textAlign: 'center' }}>{pickIcon(page.icon)}</Typography>
                                     </MenuItem>
                                 </Tooltip>
                             ))}
                         </Menu>
                     </Box>
 
-                    <MicrochipIcon sx={{display: 'flex', mr: 0.8}}/>
+                    <MicrochipIcon sx={{ display: 'flex', mr: 1.2 }}/>
 
                     <Typography
                         variant="h6"
@@ -114,8 +133,7 @@ function NavBar() {
                                         display: 'block',
                                         color: 'inherit',
                                     }}
-                                >
-                                    {page.icon}
+                                >{pickIcon(page.icon)}
                                 </Button>
                             </Tooltip>
                         ))}
