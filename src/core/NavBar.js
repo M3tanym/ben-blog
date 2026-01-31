@@ -82,10 +82,7 @@ function NavBar() {
                             }}
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' },
-                                // height: 200,
-                            }}
+                            sx={{ display: { xs: 'block', md: 'none' } }}
                         >
                             {pages.map((page) => (
                                 <Tooltip title={page.tooltip} key={page.tooltip}>
@@ -95,15 +92,15 @@ function NavBar() {
                                             navigatePage(page.url);
                                         }}
                                     >
-                                        <Typography sx={{ textAlign: 'center' }}>{pickIcon(page.icon)}</Typography>
+                                        <Typography sx={{ textAlign: 'center', mr: 1, mt: 0.7 }}>{pickIcon(page.icon)}</Typography>
+                                        <Typography>{page.tooltip}</Typography>
                                     </MenuItem>
                                 </Tooltip>
                             ))}
                         </Menu>
                     </Box>
 
-                    <MicrochipIcon sx={{ display: 'flex', mr: 1.2 }}/>
-
+                    <MicrochipIcon sx={{ mr: 1.2, display: { xs: 'none', md: 'flex' }  }}/>
                     <Typography
                         variant="h6"
                         noWrap
@@ -119,6 +116,8 @@ function NavBar() {
                         component={Link}
                         href="/"
                     >Ben's Blog</Typography>
+
+                    <MicrochipIcon sx={{ display: { xs: 'flex', md: 'none' }  }}/>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (

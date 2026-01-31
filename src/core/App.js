@@ -72,6 +72,3 @@ const App = () => {
 };
 
 export default App;
-
-// TODO:
-// - fix theme issues (stop using theme.whatever ? : etc)
