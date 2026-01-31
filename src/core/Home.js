@@ -13,8 +13,7 @@ const StyledContainer = styled(Container)(
 const Home = () => {
     return (
         <StyledContainer maxWidth={'md'}>
-            <title>Ben's Blog</title>
-            <NavBar />
+            <NavBar/>
             <PageList/>
         </StyledContainer>
     );

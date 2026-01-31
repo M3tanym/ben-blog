@@ -172,8 +172,7 @@ const MarkdownRenderer = (props) => {
                                         language={match[1]}
                                         PreTag={'div'}
                                         className={'highlighter-elem'}
-                                        {...props}
-                                    />
+                                        {...props}/>
                                 ) : (
                                     <StyledCode className={((className || '') + 'styled-code' + (isBlock ? ' block highlighter-elem' : ''))} {...props}>
                                         {children}
@@ -190,7 +189,7 @@ const MarkdownRenderer = (props) => {
                                             }, 2000);
                                         });
                                     }}>
-                                        <ContentCopyIcon />
+                                        <ContentCopyIcon/>
                                     </IconButton>
                                 );
 
@@ -241,16 +240,15 @@ const MarkdownRenderer = (props) => {
                                             src={src} style={{filter: filter}}/>
                             },
                             blockquote({...props}) {
-                                return <StyledBlockquote {...props} />
+                                return <StyledBlockquote {...props}/>
                             },
                             a({...props}) {
-                                return <StyledLink {...props} />
+                                return <StyledLink {...props}/>
                             },
                             table({...props}) {
-                                return <StyledTable {...props} />
+                                return <StyledTable {...props}/>
                             }
-                        }}
-        />);
+                        }}/>);
 }
 
 export default MarkdownRenderer;

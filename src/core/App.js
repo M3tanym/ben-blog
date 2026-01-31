@@ -30,10 +30,10 @@ const themeDark = createTheme({
     palette: {
         mode: 'dark',
         background: {
-            default: "#0d1116",
+            default: "#121212",
         },
         text: {
-            primary: "#f0f6fc",
+            primary: "rgba(255, 255, 255, 0.87)",
         },
     }
 });

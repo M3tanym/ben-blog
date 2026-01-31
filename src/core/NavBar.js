@@ -13,7 +13,7 @@ import {MicrochipIcon} from './CustomIcons';
 import {Link, Tooltip} from "@mui/material";
 
 const pages = [
-    {'tooltip': 'Home', 'url': '/', 'icon': '🏡'},
+    {'tooltip': 'Table of Contents', 'url': '/', 'icon': '📖'},
     {'tooltip': 'Main Site', 'url': 'https://bengillett.com', 'icon': '👤',},
     {'tooltip': 'Comments', 'url': '/comments', 'icon': '💬',},
     {'tooltip': 'You Are Here', 'url': '/here', 'icon': '📍', },
@@ -47,7 +47,7 @@ function NavBar() {
                             onClick={handleOpenNavMenu}
                             color="inherit"
                         >
-                            <MenuIcon />
+                            <MenuIcon/>
                         </IconButton>
                         <Menu
                             id="menu-appbar"
@@ -83,7 +83,7 @@ function NavBar() {
                         </Menu>
                     </Box>
 
-                    <MicrochipIcon sx={{display: 'flex', mr: 1}} />
+                    <MicrochipIcon sx={{display: 'flex', mr: 0.8}}/>
 
                     <Typography
                         variant="h6"

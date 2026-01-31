@@ -8,14 +8,16 @@ const StyledBox = styled(Box)(
     () => `
     .table-of-contents {
         margin-top: 0.6em;
-        margin-bottom: 0.4em;
+        margin-bottom: 0.5em;
         text-align: center;
+        font-size: 34px;
     }
     
     .page-item {
         display: flex;
         justify-content: space-between;
         margin-bottom: 0.6em;
+        font-size: 20px;
     }
     
     .page-name {

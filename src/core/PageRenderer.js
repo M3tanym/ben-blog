@@ -13,7 +13,7 @@ const StyledContainer = styled(Container)(
 const PageRenderer = (props) => {
     return (
         <StyledContainer maxWidth={'md'}>
-            <NavBar />
+            <NavBar/>
             <MarkdownRenderer markdown={props.markdown}/>
         </StyledContainer>
     );
