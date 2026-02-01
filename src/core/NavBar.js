@@ -12,15 +12,21 @@ import {Link, Tooltip} from "@mui/material";
 import {MicrochipIcon} from './CustomIcons';
 import MenuIcon from '@mui/icons-material/Menu';
 import TocIcon from '@mui/icons-material/Toc';
-import HomeIcon from '@mui/icons-material/Home';
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+// import ForumOutlined from '@mui/icons-material/ForumOutlined';
+// import PlaceOutlined from '@mui/icons-material/PlaceOutlined';
+// import ContactPageOutlinedIcon from '@mui/icons-material/ContactPageOutlined';
+// import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import ChatIcon from '@mui/icons-material/Chat';
 import PlaceIcon from '@mui/icons-material/Place';
+import ContactPageIcon from '@mui/icons-material/ContactPage';
+import PersonIcon from '@mui/icons-material/Person';
 
 const pages = [
     {'tooltip': 'Table of Contents', 'url': '/', 'icon': 'toc'},
-    {'tooltip': 'Main Site', 'url': 'https://bengillett.com', 'icon': 'home'},
-    {'tooltip': 'Comments', 'url': '/comments', 'icon': 'comment'},
+    {'tooltip': 'About', 'url': '/about', 'icon': 'about'},
+    {'tooltip': 'Comments', 'url': '/comments', 'icon': 'bubble'},
     {'tooltip': 'You are Here', 'url': '/here', 'icon': 'place'},
+    {'tooltip': 'Main Site', 'url': 'https://bengillett.com', 'icon': 'contact'},
 ];
 
 function NavBar() {
@@ -42,14 +48,16 @@ function NavBar() {
         switch (icon) {
             case 'toc':
                 return <TocIcon />;
-            case 'home':
-                return <HomeIcon />;
-            case 'comment':
-                return <ChatBubbleIcon />;
+            case 'about':
+                return <PersonIcon />;
+            case 'bubble':
+                return <ChatIcon />;
             case 'place':
                 return <PlaceIcon />;
+            case 'contact':
+                return <ContactPageIcon />;
             default:
-            return <MenuIcon />;
+                return <MenuIcon />;
         }
     };
 
