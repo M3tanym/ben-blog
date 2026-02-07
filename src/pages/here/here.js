@@ -24,7 +24,7 @@ const Here = () => {
                 return;
             }
             setTempCount(tempCount => tempCount + 1);
-        }, 100);
+        }, 70);
         return () => clearInterval(interval);
     }, [hereCount]);
 

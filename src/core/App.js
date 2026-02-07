@@ -43,7 +43,7 @@ const App = () => {
     const {enqueueSnackbar} = useSnackbar();
     const produceSnackBar = (message, variant = 'error') => enqueueSnackbar(message, {variant: variant});
     const OverrideRouter = () => {
-        if (window.location.host === 'valentine.bengillett.com') {
+        if (window.location.host.includes('valentine.bengillett.com')) {
             return (<Valentine/>);
         }
         return (
